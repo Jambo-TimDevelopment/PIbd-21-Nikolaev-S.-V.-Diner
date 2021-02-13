@@ -10,10 +10,12 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
     public class OrderLogic
     {
         private readonly IOrderStorage _orderStorage;
+
         public OrderLogic(IOrderStorage orderStorage)
         {
             _orderStorage = orderStorage;
         }
+
         public List<OrderViewModel> Read(OrderBindingModel model)
         {
             if (model == null)
@@ -26,6 +28,7 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
             }
             return _orderStorage.GetFilteredList(model);
         }
+
         public void CreateOrder(CreateOrderBindingModel model)
         {
             _orderStorage.Insert(new OrderBindingModel
@@ -37,12 +40,12 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
                 Status = OrderStatus.Принят
             });
         }
+
         public void TakeOrderInWork(ChangeStatusBindingModel model)
         {
             var order = _orderStorage.GetElement(new OrderBindingModel
             {
-                Id =
-           model.OrderId
+                Id = model.OrderId
             });
             if (order == null)
             {
@@ -67,8 +70,7 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
         {
             var order = _orderStorage.GetElement(new OrderBindingModel
             {
-                Id =
-           model.OrderId
+                Id = model.OrderId
             });
             if (order == null)
             {
