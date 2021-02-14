@@ -93,7 +93,28 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
         }
         public void PayOrder(ChangeStatusBindingModel model)
         {
-            // продумать логику
+            var order = _orderStorage.GetElement(new OrderBindingModel
+            {
+                Id = model.OrderId
+            });
+            if (order == null)
+            {
+                throw new Exception("Не найден заказ");
+            }
+            if (order.Status != OrderStatus.Выполняется)
+            {
+                throw new Exception("Заказ не в статусе \"Оплачен\"");
+            }
+            _orderStorage.Update(new OrderBindingModel
+            {
+                Id = order.Id,
+                ProductId = order.ProductId,
+                Count = order.Count,
+                Sum = order.Sum,
+                DateCreate = order.DateCreate,
+                DateImplement = order.DateImplement,
+                Status = OrderStatus.Оплачен
+            });
         }
     }
 }

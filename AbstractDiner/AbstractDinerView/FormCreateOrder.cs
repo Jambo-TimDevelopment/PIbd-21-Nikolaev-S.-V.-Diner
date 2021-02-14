@@ -11,8 +11,11 @@ namespace AbstractDinerView
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
+
         private readonly ProductLogic _logicP;
+
         private readonly OrderLogic _logicO;
+
         public FormCreateOrder(ProductLogic logicP, OrderLogic logicO)
         {
             InitializeComponent();
