@@ -30,9 +30,9 @@
         {
             this.ButtonCancel = new System.Windows.Forms.Button();
             this.ButtonSave = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelProduct = new System.Windows.Forms.Label();
+            this.labelCount = new System.Windows.Forms.Label();
+            this.labelPrice = new System.Windows.Forms.Label();
             this.comboBoxProduct = new System.Windows.Forms.ComboBox();
             this.textBoxCount = new System.Windows.Forms.TextBox();
             this.textBoxSum = new System.Windows.Forms.TextBox();
@@ -58,32 +58,32 @@
             this.ButtonSave.UseVisualStyleBackColor = true;
             this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
-            // label1
+            // labelProduct
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Изделие";
+            this.labelProduct.AutoSize = true;
+            this.labelProduct.Location = new System.Drawing.Point(13, 13);
+            this.labelProduct.Name = "labelProduct";
+            this.labelProduct.Size = new System.Drawing.Size(76, 20);
+            this.labelProduct.TabIndex = 2;
+            this.labelProduct.Text = "Изделие";
             // 
-            // label2
+            // labelCount
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 60);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Колиество";
+            this.labelCount.AutoSize = true;
+            this.labelCount.Location = new System.Drawing.Point(13, 60);
+            this.labelCount.Name = "labelCount";
+            this.labelCount.Size = new System.Drawing.Size(91, 20);
+            this.labelCount.TabIndex = 3;
+            this.labelCount.Text = "Колиество";
             // 
-            // label3
+            // labelPrice
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 114);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Сумма";
+            this.labelPrice.AutoSize = true;
+            this.labelPrice.Location = new System.Drawing.Point(13, 114);
+            this.labelPrice.Name = "labelPrice";
+            this.labelPrice.Size = new System.Drawing.Size(58, 20);
+            this.labelPrice.TabIndex = 4;
+            this.labelPrice.Text = "Сумма";
             // 
             // comboBoxProduct
             // 
@@ -117,9 +117,9 @@
             this.Controls.Add(this.textBoxSum);
             this.Controls.Add(this.textBoxCount);
             this.Controls.Add(this.comboBoxProduct);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelPrice);
+            this.Controls.Add(this.labelCount);
+            this.Controls.Add(this.labelProduct);
             this.Controls.Add(this.ButtonSave);
             this.Controls.Add(this.ButtonCancel);
             this.Name = "FormCreateOrder";
@@ -134,9 +134,9 @@
 
         private System.Windows.Forms.Button ButtonCancel;
         private System.Windows.Forms.Button ButtonSave;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelProduct;
+        private System.Windows.Forms.Label labelCount;
+        private System.Windows.Forms.Label labelPrice;
         private System.Windows.Forms.ComboBox comboBoxProduct;
         private System.Windows.Forms.TextBox textBoxCount;
         private System.Windows.Forms.TextBox textBoxSum;

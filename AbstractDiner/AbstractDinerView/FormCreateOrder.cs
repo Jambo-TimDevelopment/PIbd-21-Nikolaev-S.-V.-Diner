@@ -49,8 +49,7 @@ namespace AbstractDinerView
 
         private void CalcSum()
         {
-            if (comboBoxProduct.SelectedValue != null &&
-           !string.IsNullOrEmpty(textBoxCount.Text))
+            if (comboBoxProduct.SelectedValue != null && !string.IsNullOrEmpty(textBoxCount.Text))
             {
                 try
                 {
