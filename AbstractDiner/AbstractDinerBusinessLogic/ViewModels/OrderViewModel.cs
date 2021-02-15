@@ -11,8 +11,6 @@ namespace AbstractDinerBusinessLogic.ViewModels
     /// </summary>
     public class OrderViewModel
     {
-        public int Id { get; set; }
-        public int ProductId { get; set; }
         [DisplayName("Изделие")]
         public string ProductName { get; set; }
         [DisplayName("Количество")]
@@ -21,6 +19,8 @@ namespace AbstractDinerBusinessLogic.ViewModels
         public decimal Sum { get; set; }
         [DisplayName("Статус")]
         public OrderStatus Status { get; set; }
+        public int Id { get; set; }
+        public int ProductId { get; set; }
         [DisplayName("Дата создания")]
         public DateTime DateCreate { get; set; }
         [DisplayName("Дата выполнения")]

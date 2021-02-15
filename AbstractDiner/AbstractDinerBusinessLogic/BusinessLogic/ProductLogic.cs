@@ -9,6 +9,7 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
     public class ProductLogic 
     {
         private readonly IProductStorage _productStorage;
+
         public ProductLogic(IProductStorage productStorage)
         {
             _productStorage = productStorage;
@@ -22,8 +23,7 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
             }
             if (model.Id.HasValue)
             {
-                return new List<ProductViewModel> { _productStorage.GetElement(model)
-};
+                return new List<ProductViewModel> { _productStorage.GetElement(model) };
             }
             return _productStorage.GetFilteredList(model);
         }

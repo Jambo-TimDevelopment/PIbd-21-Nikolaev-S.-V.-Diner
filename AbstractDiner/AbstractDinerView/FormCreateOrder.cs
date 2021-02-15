@@ -2,6 +2,7 @@
 using AbstractDinerBusinessLogic.BusinessLogic;
 using AbstractDinerBusinessLogic.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Unity;
 
@@ -27,12 +28,22 @@ namespace AbstractDinerView
         {
             try
             {
-                // продумать логику
+                List<ProductViewModel> list = _logicP.Read(null);
+                if (list != null)
+                {
+                    comboBoxProduct.DisplayMember = "PrintedName";
+                    comboBoxProduct.ValueMember = "Id";
+                    comboBoxProduct.DataSource = list;
+                    comboBoxProduct.SelectedItem = null;
+                }
+                else
+                {
+                    throw new Exception("Не удалось загрузить список изделий");
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-               MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -63,7 +74,7 @@ namespace AbstractDinerView
 
         private void ComboBoxProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
-        CalcSum();
+            CalcSum();
         }
 
         private void ButtonSave_Click(object sender, EventArgs e)
@@ -71,13 +82,13 @@ namespace AbstractDinerView
             if (string.IsNullOrEmpty(textBoxCount.Text))
             {
                 MessageBox.Show("Заполните поле Количество", "Ошибка",
-               MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (comboBoxProduct.SelectedValue == null)
             {
                 MessageBox.Show("Выберите изделие", "Ошибка", MessageBoxButtons.OK,
-               MessageBoxIcon.Error);
+                MessageBoxIcon.Error);
                 return;
             }
             try
@@ -96,7 +107,7 @@ namespace AbstractDinerView
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-               MessageBoxIcon.Error);
+                MessageBoxIcon.Error);
             }
         }
 

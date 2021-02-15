@@ -48,7 +48,7 @@ namespace AbstractDinerView
             if (comboBoxComponent.SelectedValue == null)
             {
                 MessageBox.Show("Выберите компонент", "Ошибка", MessageBoxButtons.OK,
-               MessageBoxIcon.Error);
+                MessageBoxIcon.Error);
                 return;
             }
             DialogResult = DialogResult.OK;

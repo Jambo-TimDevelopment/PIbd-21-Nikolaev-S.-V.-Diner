@@ -4,7 +4,6 @@ using System;
 using System.Windows.Forms;
 using Unity;
 
-
 namespace AbstractDinerView
 {
     public partial class FormMain : Form
@@ -29,7 +28,12 @@ namespace AbstractDinerView
         {
             try
             {
-                // продумать логику
+                var list = _orderLogic.Read(null);
+                if (list != null)
+                {
+                    dataGridView.DataSource = list;
+                }
+
             }
             catch (Exception ex)
             {

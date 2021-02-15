@@ -12,15 +12,21 @@ namespace AbstractDinerView
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
+        
         public int Id { set { id = value; } }
+        
         private readonly ProductLogic logic;
+        
         private int? id;
+        
         private Dictionary<int, (string, int)> productComponents;
+
         public FormProduct(ProductLogic service)
         {
             InitializeComponent();
             this.logic = service;
         }
+
         private void FormProduct_Load(object sender, EventArgs e)
         {
             if (id.HasValue)
@@ -47,6 +53,7 @@ namespace AbstractDinerView
                 productComponents = new Dictionary<int, (string, int)>();
             }
         }
+
         private void LoadData()
         {
             try
@@ -56,7 +63,7 @@ namespace AbstractDinerView
                     dataGridView.Rows.Clear();
                     foreach (var pc in productComponents)
                     {
-                        dataGridView.Rows.Add(new object[] { pc.Key, pc.Value.Item1, pc.Value.Item2 });
+                        dataGridView.Rows.Add(new object[] {  pc.Value.Item1, pc.Value.Item2 });
                     }
                 }
             }
@@ -66,6 +73,7 @@ namespace AbstractDinerView
                MessageBoxIcon.Error);
             }
         }
+
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormProductComponent>();
@@ -82,22 +90,12 @@ namespace AbstractDinerView
                 LoadData();
             }
         }
+
         private void ButtonUpd_Click(object sender, EventArgs e)
         {
-            if (dataGridView.SelectedRows.Count == 1)
-            {
 
-            var form = Container.Resolve<FormProductComponent>();
-                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
-                form.Id = id;
-                form.Count = productComponents[id].Item2;
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    productComponents[form.Id] = (form.ComponentName, form.Count);
-                    LoadData();
-                }
-            }
         }
+
         private void ButtonDel_Click(object sender, EventArgs e)
         {
             if (dataGridView.SelectedRows.Count == 1)
@@ -119,10 +117,12 @@ namespace AbstractDinerView
                 }
             }
         }
+
         private void ButtonRef_Click(object sender, EventArgs e)
         {
             LoadData();
         }
+
         private void ButtonSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxName.Text))
@@ -163,6 +163,7 @@ namespace AbstractDinerView
                MessageBoxIcon.Error);
             }
         }
+
         private void ButtonCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
