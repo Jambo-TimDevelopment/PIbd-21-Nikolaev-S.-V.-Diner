@@ -7,7 +7,7 @@ using Unity;
 
 namespace AbstractDinerView
 {
-    public partial class FormProductComponent : Form
+    public partial class FormSnackComponent : Form
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
@@ -17,6 +17,7 @@ namespace AbstractDinerView
             get { return Convert.ToInt32(comboBoxComponent.SelectedValue); }
             set { comboBoxComponent.SelectedValue = value; }
         }
+
         public string ComponentName { get { return comboBoxComponent.Text; } }
 
         public int Count
@@ -28,7 +29,7 @@ namespace AbstractDinerView
             }
         }
 
-        public FormProductComponent(ComponentLogic logic)
+        public FormSnackComponent(ComponentLogic logic)
         {
             InitializeComponent();
             List<ComponentViewModel> list = logic.Read(null);

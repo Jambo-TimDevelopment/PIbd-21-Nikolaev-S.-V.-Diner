@@ -10,12 +10,15 @@ namespace AbstractDinerView
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
+
         private readonly SnackLogic logic;
+
         public FormSnacks(SnackLogic logic)
         {
             InitializeComponent();
             this.logic = logic;
         }
+
         private void FormSnacks_Load(object sender, EventArgs e)
         {
             LoadData();
@@ -61,6 +64,7 @@ namespace AbstractDinerView
                 }
             }
         }
+
         private void ButtonDel_Click(object sender, EventArgs e)
         {
             if (dataGridView.SelectedRows.Count == 1)

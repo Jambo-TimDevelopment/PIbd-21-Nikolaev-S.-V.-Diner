@@ -38,7 +38,7 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
                 Sum = model.Sum,
                 DateCreate = DateTime.Now,
                 Status = OrderStatus.Принят
-            }) ;
+            });
         }
 
         public void TakeOrderInWork(ChangeStatusBindingModel model)

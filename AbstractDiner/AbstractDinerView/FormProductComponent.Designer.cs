@@ -1,6 +1,6 @@
 ﻿namespace AbstractDinerView
 {
-    partial class FormProductComponent
+    partial class FormSnackComponent
     {
         /// <summary>
         /// Required designer variable.

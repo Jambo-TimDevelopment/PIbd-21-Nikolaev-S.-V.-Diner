@@ -148,6 +148,10 @@
       <Project>{bfd8121b-df33-47f6-89e8-eb8585d96a95}</Project>
       <Name>AbstractDinerBusinessLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AbstractDinerFileImplement\AbstractDinerFileImplement.csproj">
+      <Project>{4d4f9246-fc44-4f0a-a778-a0ef949ed934}</Project>
+      <Name>AbstractDinerFileImplement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AbstractDinnerListImplement\AbstractDinnerListImplement.csproj">
       <Project>{1d65ae2d-bcc9-4c79-b35a-8e1ccd56382c}</Project>
       <Name>AbstractDinnerListImplement</Name>

@@ -40,7 +40,7 @@ namespace AbstractDinerView
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(12, 13);
+            this.dataGridView.Location = new System.Drawing.Point(12, 14);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 62;
             this.dataGridView.RowTemplate.Height = 28;
@@ -99,6 +99,7 @@ namespace AbstractDinerView
             this.Controls.Add(this.dataGridView);
             this.Name = "FormSnacks";
             this.Text = "Изделия";
+            this.Load += new System.EventHandler(this.FormSnacks_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 

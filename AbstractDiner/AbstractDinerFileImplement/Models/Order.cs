@@ -1,37 +1,31 @@
 ﻿using AbstractDinerBusinessLogic.Enums;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Text;
 
-namespace AbstractDinerBusinessLogic.ViewModels
+namespace AbstractDinnerFileImplement.Models
 {
     /// <summary>
     /// Заказ
     /// </summary>
-    public class OrderViewModel
+    public class Order
     {
-        [DisplayName("Изделие")]
-        public string SnackName { get; set; }
-
-        [DisplayName("Количество")]
-        public int Count { get; set; }
-
-        [DisplayName("Сумма")]
-        public decimal Sum { get; set; }
-
-        [DisplayName("Статус")]
-        public OrderStatus Status { get; set; }
-
         public int Id { get; set; }
 
         public int SnackId { get; set; }
 
-        [DisplayName("Дата создания")]
+        public string OrderName { get; set; }
+
+        public string SnackName { get; set; }
+
+        public int Count { get; set; }
+
+        public decimal Sum { get; set; }
+
+        public OrderStatus Status { get; set; }
+
         public DateTime DateCreate { get; set; }
 
-        [DisplayName("Дата выполнения")]
         public DateTime? DateImplement { get; set; }
     }
-
 }

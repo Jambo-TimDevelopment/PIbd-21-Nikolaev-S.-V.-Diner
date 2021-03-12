@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AbstractDinnerListImplement.Models
+namespace AbstractDinnerFileImplement.Models
 {
     public class DataListSingleton
     {
@@ -18,6 +18,7 @@ namespace AbstractDinnerListImplement.Models
         {
             Components = new List<Component>();
             Orders = new List<Order>();
+            
             Snacks = new List<Snack>();
         }
         

@@ -12,6 +12,8 @@ namespace AbstractDinerBusinessLogic.BindingModels
 
         public int SnackId { get; set; }
 
+        public string SnackName { get; set; }
+
         public int Count { get; set; }
 
         public decimal Sum { get; set; }
