@@ -85,11 +85,11 @@
     <Compile Include="FormSnack.Designer.cs">
       <DependentUpon>FormSnack.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSnackComponent.cs">
+    <Compile Include="FormProductComponent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSnackComponent.Designer.cs">
-      <DependentUpon>FormSnackComponent.cs</DependentUpon>
+    <Compile Include="FormProductComponent.Designer.cs">
+      <DependentUpon>FormProductComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="FormSnacks.cs">
       <SubType>Form</SubType>
@@ -114,8 +114,8 @@
     <EmbeddedResource Include="FormSnack.resx">
       <DependentUpon>FormSnack.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSnackComponent.resx">
-      <DependentUpon>FormSnackComponent.cs</DependentUpon>
+    <EmbeddedResource Include="FormProductComponent.resx">
+      <DependentUpon>FormProductComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSnacks.resx">
       <DependentUpon>FormSnacks.cs</DependentUpon>
@@ -147,6 +147,10 @@
     <ProjectReference Include="..\AbstractDinerBusinessLogic\AbstractDinerBusinessLogic.csproj">
       <Project>{bfd8121b-df33-47f6-89e8-eb8585d96a95}</Project>
       <Name>AbstractDinerBusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AbstractDinerFileImplement\AbstractDinerFileImplement.csproj">
+      <Project>{4d4f9246-fc44-4f0a-a778-a0ef949ed934}</Project>
+      <Name>AbstractDinerFileImplement</Name>
     </ProjectReference>
     <ProjectReference Include="..\AbstractDinnerListImplement\AbstractDinnerListImplement.csproj">
       <Project>{1d65ae2d-bcc9-4c79-b35a-8e1ccd56382c}</Project>
