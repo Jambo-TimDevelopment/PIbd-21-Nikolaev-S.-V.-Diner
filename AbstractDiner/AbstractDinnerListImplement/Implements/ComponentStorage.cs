@@ -108,6 +108,7 @@ namespace AbstractDinnerListImplement.Implements
             component.ComponentName = model.ComponentName;
             return component;
         }
+
         private ComponentViewModel CreateModel(Component component)
         {
             return new ComponentViewModel

@@ -66,6 +66,7 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
                 Status = OrderStatus.Выполняется
             });
         }
+
         public void FinishOrder(ChangeStatusBindingModel model)
         {
             var order = _orderStorage.GetElement(new OrderBindingModel
@@ -91,6 +92,7 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
                 Status = OrderStatus.Готов
             });
         }
+
         public void PayOrder(ChangeStatusBindingModel model)
         {
             var order = _orderStorage.GetElement(new OrderBindingModel

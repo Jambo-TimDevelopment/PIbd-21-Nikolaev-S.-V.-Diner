@@ -17,6 +17,7 @@ namespace AbstractDinerView
             get { return Convert.ToInt32(comboBoxComponent.SelectedValue); }
             set { comboBoxComponent.SelectedValue = value; }
         }
+
         public string ComponentName { get { return comboBoxComponent.Text; } }
 
         public int Count
