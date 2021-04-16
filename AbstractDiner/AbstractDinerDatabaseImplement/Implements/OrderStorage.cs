@@ -26,6 +26,8 @@ namespace AbstractDinerDatabaseImplement.Implements
                     Status = rec.Status,
                     DateCreate = rec.DateCreate,
                     DateImplement = rec.DateImplement,
+                    ClientId = rec.ClientId,
+                    ClientFIO = context.Clients.FirstOrDefault(x => x.Id == rec.ClientId).ClientFIO
                 })
                 .ToList();
             }
@@ -35,6 +37,27 @@ namespace AbstractDinerDatabaseImplement.Implements
             if (model == null)
             {
                 return null;
+            }
+            if (model.DateFrom != null && model.DateTo != null)
+            {
+                using (var context = new AbstractDinerDatabase())
+                {
+                    return context.Orders
+                        .Where(rec => rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo)
+                        .Select(rec => new OrderViewModel
+                        {
+                            Id = rec.Id,
+                            SnackId = rec.SnackId,
+                            SnackName = context.Snacks.FirstOrDefault(pr => pr.Id == rec.SnackId).SnackName,
+                            Count = rec.Count,
+                            Sum = rec.Sum,
+                            Status = rec.Status,
+                            DateCreate = rec.DateCreate,
+                            DateImplement = rec.DateImplement,
+                            ClientId = rec.ClientId,
+                        })
+                        .ToList();
+                }
             }
             using (var context = new AbstractDinerDatabase())
             {
@@ -75,6 +98,7 @@ namespace AbstractDinerDatabaseImplement.Implements
                     Status = order.Status,
                     DateCreate = order.DateCreate,
                     DateImplement = order.DateImplement,
+                    ClientId = order.ClientId,
                 } :
                 null;
             }
@@ -91,6 +115,7 @@ namespace AbstractDinerDatabaseImplement.Implements
                     Status = model.Status,
                     DateCreate = model.DateCreate,
                     DateImplement = model.DateImplement,
+                    ClientId = (int)model.ClientId,
                 };
                 context.Orders.Add(order);
                 context.SaveChanges();
@@ -113,6 +138,7 @@ namespace AbstractDinerDatabaseImplement.Implements
                 element.Status = model.Status;
                 element.DateCreate = model.DateCreate;
                 element.DateImplement = model.DateImplement;
+                element.ClientId = (int)model.ClientId;
                 CreateModel(model, element);
                 context.SaveChanges();
             }
@@ -133,6 +159,7 @@ namespace AbstractDinerDatabaseImplement.Implements
                 }
             }
         }
+
         private Order CreateModel(OrderBindingModel model, Order order)
         {
             if (model == null)

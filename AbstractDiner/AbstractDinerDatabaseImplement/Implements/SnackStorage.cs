@@ -66,8 +66,8 @@ namespace AbstractDinerDatabaseImplement.Implements
             }
             using (var context = new AbstractDinerDatabase())
             {
-               var product = context.Snacks
-               .Include(rec => rec.SnackComponents)
+                var product = context.Snacks
+                .Include(rec => rec.SnackComponents)
                .ThenInclude(rec => rec.Component)
                .FirstOrDefault(rec => rec.SnackName == model.SnackName || rec.Id
                == model.Id);

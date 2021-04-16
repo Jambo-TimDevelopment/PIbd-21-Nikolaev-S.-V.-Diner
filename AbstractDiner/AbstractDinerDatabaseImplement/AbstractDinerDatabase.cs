@@ -21,5 +21,7 @@ namespace AbstractDinerDatabaseImplement
         public virtual DbSet<SnackComponent> SnackComponents { set; get; }
         
         public virtual DbSet<Order> Orders { set; get; }
+
+        public virtual DbSet<Client> Clients { set; get; }
     }
 }

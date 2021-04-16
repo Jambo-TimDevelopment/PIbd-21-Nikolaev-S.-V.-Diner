@@ -13,6 +13,8 @@ namespace AbstractDinerDatabaseImplement.Models
     {
         public int Id { get; set; }
 
+        public int ClientId { get; set; }
+
         public int SnackId { get; set; }
         
         public string OrderName { get; set; }
