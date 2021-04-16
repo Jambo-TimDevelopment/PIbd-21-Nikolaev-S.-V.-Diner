@@ -28,7 +28,8 @@ namespace AbstractDinerFileImplement.Implements
             {
                 return null;
             }
-            return source.Snacks.Where(rec => rec.SnackName.Contains(model.SnackName)).Select(CreateModel).ToList();
+            return source.Snacks
+            .Where(rec => rec.SnackName.Contains(model.SnackName)).Select(CreateModel).ToList();
         }
 
         public SnackViewModel GetElement(SnackBindingModel model)
@@ -92,11 +93,13 @@ namespace AbstractDinerFileImplement.Implements
             {
                 if (snack.SnackComponents.ContainsKey(component.Key))
                 {
-                    snack.SnackComponents[component.Key] = model.SnackComponents[component.Key].Item2;
+                    snack.SnackComponents[component.Key] =
+                   model.SnackComponents[component.Key].Item2;
                 }
                 else
                 {
-                    snack.SnackComponents.Add(component.Key, model.SnackComponents[component.Key].Item2);
+                    snack.SnackComponents.Add(component.Key,
+                   model.SnackComponents[component.Key].Item2);
                 }
             }
             return snack;

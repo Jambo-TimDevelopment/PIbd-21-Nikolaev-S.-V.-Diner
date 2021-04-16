@@ -10,7 +10,6 @@ namespace AbstractDinnerListImplement.Implements
     public class ComponentStorage : IComponentStorage
     {
         private readonly DataListSingleton source;
-
         public ComponentStorage()
         {
             source = DataListSingleton.GetInstance();
@@ -108,7 +107,6 @@ namespace AbstractDinnerListImplement.Implements
             component.ComponentName = model.ComponentName;
             return component;
         }
-
         private ComponentViewModel CreateModel(Component component)
         {
             return new ComponentViewModel

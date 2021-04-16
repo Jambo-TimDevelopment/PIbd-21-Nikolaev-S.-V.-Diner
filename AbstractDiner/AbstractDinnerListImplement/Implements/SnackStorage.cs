@@ -11,7 +11,6 @@ namespace AbstractDinnerListImplement.Implements
     public class SnackStorage : ISnackStorage
     {
         private readonly DataListSingleton source;
-
         public SnackStorage()
         {
             source = DataListSingleton.GetInstance();
@@ -34,11 +33,11 @@ namespace AbstractDinnerListImplement.Implements
                 return null;
             }
             List<SnackViewModel> result = new List<SnackViewModel>();
-            foreach (var snack in source.Snacks)
+            foreach (var product in source.Snacks)
             {
-                if (snack.SnacksName.Contains(model.SnackName))
+                if (product.SnackName.Contains(model.SnackName))
                 {
-                    result.Add(CreateModel(snack));
+                    result.Add(CreateModel(product));
                 }
             }
             return result;
@@ -50,12 +49,12 @@ namespace AbstractDinnerListImplement.Implements
             {
                 return null;
             }
-            foreach (var snack in source.Snacks)
+            foreach (var product in source.Snacks)
             {
-                if (snack.Id == model.Id || snack.SnacksName ==
+                if (product.Id == model.Id || product.SnackName ==
                 model.SnackName)
                 {
-                    return CreateModel(snack);
+                    return CreateModel(product);
                 }
             }
             return null;
@@ -110,7 +109,7 @@ namespace AbstractDinnerListImplement.Implements
 
         private Snack CreateModel(SnackBindingModel model, Snack snack)
         {
-            snack.SnacksName = model.SnackName;
+            snack.SnackName = model.SnackName;
             snack.Price = model.Price;
             // удаляем убранные
             foreach (var key in snack.SnackComponents.Keys.ToList())
@@ -158,7 +157,7 @@ namespace AbstractDinnerListImplement.Implements
             return new SnackViewModel
             {
                 Id = snack.Id,
-                SnackName = snack.SnacksName,
+                SnackName = snack.SnackName,
                 Price = snack.Price,
                 SnackComponents = snackComponents
             };

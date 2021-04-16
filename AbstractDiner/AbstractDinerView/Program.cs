@@ -4,7 +4,7 @@ using System;
 using System.Windows.Forms;
 using Unity.Lifetime;
 using Unity;
-using AbstractDinerFileImplement.Implements;
+using AbstractDinerDatabaseImplement.Implements;
 
 namespace AbstractDinerView
 {

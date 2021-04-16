@@ -11,15 +11,12 @@ namespace AbstractDinerView
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
-
         public int Id
         {
             get { return Convert.ToInt32(comboBoxComponent.SelectedValue); }
             set { comboBoxComponent.SelectedValue = value; }
         }
-
         public string ComponentName { get { return comboBoxComponent.Text; } }
-
         public int Count
         {
             get { return Convert.ToInt32(textBoxCount.Text); }
@@ -28,7 +25,6 @@ namespace AbstractDinerView
                 textBoxCount.Text = value.ToString();
             }
         }
-
         public FormSnackComponent(ComponentLogic logic)
         {
             InitializeComponent();
@@ -41,7 +37,6 @@ namespace AbstractDinerView
                 comboBoxComponent.SelectedItem = null;
             }
         }
-
         private void ButtonSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxCount.Text))
@@ -59,7 +54,6 @@ namespace AbstractDinerView
             DialogResult = DialogResult.OK;
             Close();
         }
-
         private void ButtonCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
