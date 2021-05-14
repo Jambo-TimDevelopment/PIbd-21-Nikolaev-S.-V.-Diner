@@ -1,9 +1,7 @@
 ﻿using AbstractDinerBusinessLogic.Enums;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.Serialization;
-using System.Text;
 
 namespace AbstractDinerBusinessLogic.ViewModels
 {
@@ -12,6 +10,13 @@ namespace AbstractDinerBusinessLogic.ViewModels
     /// </summary>
     public class OrderViewModel
     {
+
+        [DataMember]
+        [DisplayName("Исполнитель")]
+        public string ImplementerFIO { get; set; }
+
+        public int? ImplementerId { get; set; }
+
         [DataMember]
         public int Id { get; set; }
         
@@ -20,6 +25,9 @@ namespace AbstractDinerBusinessLogic.ViewModels
         
         [DataMember]
         public int ProductId { get; set; }
+
+        [DataMember]
+        public int SnackId { get; set; }
 
         [DataMember]
         [DisplayName("Клиент")]
@@ -42,9 +50,6 @@ namespace AbstractDinerBusinessLogic.ViewModels
         public OrderStatus Status { get; set; }
 
         [DataMember]
-        public int SnackId { get; set; }
-
-        [DataMember]
         [DisplayName("Дата создания")]
         public DateTime DateCreate { get; set; }
 
@@ -52,5 +57,4 @@ namespace AbstractDinerBusinessLogic.ViewModels
         [DisplayName("Дата выполнения")]
         public DateTime? DateImplement { get; set; }
     }
-
 }

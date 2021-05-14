@@ -1,4 +1,5 @@
 ﻿using AbstractDinerBusinessLogic.BindingModels;
+using AbstractDinerBusinessLogic.Enums;
 using AbstractDinerBusinessLogic.Interfaces;
 using AbstractDinerBusinessLogic.ViewModels;
 using AbstractDinerDatabaseImplement.Models;
@@ -6,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AbstractDinerDatabaseImplement.Implements
 {
@@ -20,13 +20,17 @@ namespace AbstractDinerDatabaseImplement.Implements
                 .Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
+                    SnackName = rec.Snack.SnackName,
                     SnackId = rec.SnackId,
-                    SnackName = context.Snacks.FirstOrDefault(pr => pr.Id == rec.SnackId).SnackName,
                     Count = rec.Count,
                     Sum = rec.Sum,
                     Status = rec.Status,
                     DateCreate = rec.DateCreate,
                     DateImplement = rec.DateImplement,
+                    ClientId = rec.ClientId,
+                    ClientFIO = rec.Client.ClientFIO,
+                    ImplementerId = rec.ImplementerId,
+                    ImplementerFIO = context.Implementers.FirstOrDefault(r => r.Id == rec.ImplementerId).ImplementerFIO,
                 })
                 .ToList();
             }
@@ -42,25 +46,36 @@ namespace AbstractDinerDatabaseImplement.Implements
             {
                 return context.Orders
                 .Include(rec => rec.Snack)
-                .Include(rec => rec.Client)
-                .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.DateCreate.Date == model.DateCreate.Date) ||
-            (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate.Date >= model.DateFrom.Value.Date && rec.DateCreate.Date <= model.DateTo.Value.Date) ||
-            (model.ClientId.HasValue && rec.ClientId == model.ClientId))
+               .Include(rec => rec.Client)
+               .Include(rec => rec.Implementer)
+               .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue &&
+               rec.DateCreate.Date == model.DateCreate.Date) ||
+                (model.DateFrom.HasValue && model.DateTo.HasValue &&
+               rec.DateCreate.Date >= model.DateFrom.Value.Date && rec.DateCreate.Date <=
+               model.DateTo.Value.Date) ||
+                (model.ClientId.HasValue && rec.ClientId == model.ClientId) ||
+               (model.FreeOrders.HasValue && model.FreeOrders.Value && rec.Status ==
+               OrderStatus.Принят) ||
+                (model.ImplementerId.HasValue && rec.ImplementerId ==
+               model.ImplementerId && rec.Status == OrderStatus.Выполняется))
                 .Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
-                    SnackId = rec.SnackId,
-                    ClientId = rec.ClientId,
-                    SnackName = rec.Snack.SnackName,
-                    ClientFIO = rec.Client.ClientFIO,
                     Count = rec.Count,
-                    Sum = rec.Sum,
-                    Status = rec.Status,
                     DateCreate = rec.DateCreate,
                     DateImplement = rec.DateImplement,
+                    ProductId = rec.SnackId,
+                    SnackName = rec.Snack.SnackName,
+                    ClientId = rec.ClientId,
+                    ClientFIO = rec.Client.ClientFIO,
+                    ImplementerId = rec.ImplementerId,
+                    ImplementerFIO = rec.ImplementerId.HasValue ? rec.Implementer.ImplementerFIO : string.Empty,
+                    Status = rec.Status,
+                    Sum = rec.Sum
                 })
-                .ToList();
+               .ToList();
             }
+
         }
 
         public OrderViewModel GetElement(OrderBindingModel model)
@@ -84,11 +99,15 @@ namespace AbstractDinerDatabaseImplement.Implements
                     Status = order.Status,
                     DateCreate = order.DateCreate,
                     DateImplement = order.DateImplement,
+                    ClientId = order.ClientId,
+                    ClientFIO = context.Clients.FirstOrDefault(rec => rec.Id == order.ClientId)?.ClientFIO,
+                    ImplementerId = order.ImplementerId,
+                    ImplementerFIO = context.Implementers.FirstOrDefault(rec => rec.Id == order.ImplementerId)?.ImplementerFIO,
                 } :
                 null;
             }
         }
-       
+
         public void Insert(OrderBindingModel model)
         {
             using (var context = new AbstractDinerDatabase())
@@ -113,27 +132,33 @@ namespace AbstractDinerDatabaseImplement.Implements
                 context.SaveChanges();
             }
         }
-        
+
         public void Update(OrderBindingModel model)
         {
             using (var context = new AbstractDinerDatabase())
             {
-                var element = context.Orders.FirstOrDefault(rec => rec.Id == model.Id);
-                if (element == null)
+                using (var transaction = context.Database.BeginTransaction())
                 {
-                    throw new Exception("Элемент не найден");
+                    try
+                    {
+                        var element = context.Orders.FirstOrDefault(rec => rec.Id == model.Id);
+                        if (element == null)
+                        {
+                            throw new Exception("Элемент не найден");
+                        }
+                        CreateModel(model, element);
+                        context.SaveChanges();
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
                 }
-                element.SnackId = model.SnackId;
-                element.Count = model.Count;
-                element.Sum = model.Sum;
-                element.Status = model.Status;
-                element.DateCreate = model.DateCreate;
-                element.DateImplement = model.DateImplement;
-                CreateModel(model, element);
-                context.SaveChanges();
             }
         }
-        
+
         public void Delete(OrderBindingModel model)
         {
             using (var context = new AbstractDinerDatabase())
@@ -150,47 +175,17 @@ namespace AbstractDinerDatabaseImplement.Implements
                 }
             }
         }
-        
+
         private Order CreateModel(OrderBindingModel model, Order order)
         {
-            if (model == null)
-            {
-                return null;
-            }
-
-            using (var context = new AbstractDinerDatabase())
-            {
-                Snack element = context.Snacks.FirstOrDefault(rec => rec.Id == model.SnackId);
-                if (element != null)
-                {
-                    if (element.Orders == null)
-                    {
-                        element.Orders = new List<Order>();
-                    }
-                    element.Orders.Add(order);
-                    context.Snacks.Update(element);
-                    context.SaveChanges();
-                }
-                else
-                {
-                    throw new Exception("Элемент не найден");
-                }
-                Client client = context.Clients.FirstOrDefault(rec => rec.Id == model.ClientId);
-                if (client != null)
-                {
-                    if (client.Order == null)
-                    {
-                        client.Order = new List<Order>();
-                    }
-                    client.Order.Add(order);
-                    context.Clients.Update(client);
-                    context.SaveChanges();
-                }
-                else
-                {
-                    throw new Exception("Элемент не найден");
-                }
-            }
+            order.Count = model.Count;
+            order.DateCreate = model.DateCreate;
+            order.DateImplement = model.DateImplement;
+            order.SnackId = model.SnackId;
+            order.ClientId = model.ClientId.Value;
+            order.ImplementerId = model.ImplementerId;
+            order.Status = model.Status;
+            order.Sum = model.Sum;
             return order;
         }
     }

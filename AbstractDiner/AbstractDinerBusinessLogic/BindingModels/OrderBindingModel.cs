@@ -42,5 +42,10 @@ namespace AbstractDinerBusinessLogic.BindingModels
 
         [DataMember]
         public DateTime? DateTo { get; set; }
+
+        [DataMember]
+        public int? ImplementerId { get; set; }
+
+        public bool? FreeOrders { get; set; }
     }
 }

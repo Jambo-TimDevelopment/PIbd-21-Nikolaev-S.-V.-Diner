@@ -11,15 +11,18 @@ namespace AbstractDinerView
         [Dependency]
         public new IUnityContainer Container { get; set; }
 
+        private readonly WorkModeling modelingWork;
+
         private readonly OrderLogic _orderLogic;
 
         private ReportLogic _reportLogic;
 
-        public FormMain(OrderLogic orderLogic, ReportLogic reportLogic)
+        public FormMain(OrderLogic orderLogic, ReportLogic reportLogic, WorkModeling modeling)
         {
             InitializeComponent();
             this._orderLogic = orderLogic;
             this._reportLogic = reportLogic;
+            this.modelingWork = modeling;
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -35,8 +38,11 @@ namespace AbstractDinerView
                 if (list != null)
                 {
                     dataGridView.DataSource = list;
-                    //dataGridView.Columns[4].Visible = false;
-                    //dataGridView.Columns[5].Visible = false;
+                    dataGridView.Columns[1].Visible = false;
+                    dataGridView.Columns[2].Visible = false;
+                    dataGridView.Columns[3].Visible = false;
+                    dataGridView.Columns[4].Visible = false;
+                    dataGridView.Columns[5].Visible = false;
                 }
             }
             catch (Exception ex)
@@ -121,6 +127,7 @@ namespace AbstractDinerView
                 }
             }
         }
+
         private void ButtonRef_Click(object sender, EventArgs e)
         {
             LoadData();
@@ -142,6 +149,7 @@ namespace AbstractDinerView
                 }
             }
         }
+
         private void ComponentProductsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormReportSnackComponents>();
@@ -156,6 +164,18 @@ namespace AbstractDinerView
         private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormClients>();
+            form.ShowDialog();
+        }
+
+        private void запускРаботToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            modelingWork.DoWork();
+            LoadData();
+        }
+
+        private void исполнителиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormImplementers>();
             form.ShowDialog();
         }
     }

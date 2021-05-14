@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AbstractDinerDatabaseImplement.Migrations
 {
     [DbContext(typeof(AbstractDinerDatabase))]
-    [Migration("20210428165936_Initial")]
-    partial class Initial
+    [Migration("20210430074006_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -61,6 +61,27 @@ namespace AbstractDinerDatabaseImplement.Migrations
                     b.ToTable("Components");
                 });
 
+            modelBuilder.Entity("AbstractDinerDatabaseImplement.Models.Implementer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ImplementerFIO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PauseTime")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WorkingTime")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Implementers");
+                });
+
             modelBuilder.Entity("AbstractDinerDatabaseImplement.Models.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -80,6 +101,9 @@ namespace AbstractDinerDatabaseImplement.Migrations
                     b.Property<DateTime?>("DateImplement")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("ImplementerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("OrderName")
                         .HasColumnType("nvarchar(max)");
 
@@ -98,6 +122,8 @@ namespace AbstractDinerDatabaseImplement.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
+
+                    b.HasIndex("ImplementerId");
 
                     b.HasIndex("SnackId");
 
@@ -155,6 +181,10 @@ namespace AbstractDinerDatabaseImplement.Migrations
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("AbstractDinerDatabaseImplement.Models.Implementer", "Implementer")
+                        .WithMany("Order")
+                        .HasForeignKey("ImplementerId");
 
                     b.HasOne("AbstractDinerDatabaseImplement.Models.Snack", "Snack")
                         .WithMany("Orders")

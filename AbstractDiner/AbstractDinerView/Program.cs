@@ -28,11 +28,13 @@ namespace AbstractDinerView
             currentContainer.RegisterType<IOrderStorage, OrderStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ISnackStorage, SnackStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IClientStorage, ClientStorage>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IImplementerStorage, ImplementerStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ComponentLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<OrderLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<SnackLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ReportLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ClientLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ImplementerLogic>(new HierarchicalLifetimeManager());
 
             return currentContainer;
         }
