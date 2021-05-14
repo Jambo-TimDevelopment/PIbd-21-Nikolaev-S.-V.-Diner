@@ -9,7 +9,7 @@ namespace AbstractDinerDatabaseImplement
         {
             if (optionsBuilder.IsConfigured == false)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=AbstractDinerDatabase;Integrated Security=True;MultipleActiveResultSets=True;");
+                optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DinerDatabase;Integrated Security=True;MultipleActiveResultSets=True;");
             }
             base.OnConfiguring(optionsBuilder);
         }
@@ -21,5 +21,7 @@ namespace AbstractDinerDatabaseImplement
         public virtual DbSet<SnackComponent> SnackComponents { set; get; }
         
         public virtual DbSet<Order> Orders { set; get; }
+
+        public virtual DbSet<Client> Clients { set; get; }
     }
 }

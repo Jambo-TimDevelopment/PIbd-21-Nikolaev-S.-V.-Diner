@@ -13,7 +13,7 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
         public static void CreateDoc(ExcelInfo info)
         {
             using (SpreadsheetDocument spreadsheetDocument =
-                SpreadsheetDocument.Create(info.FileName, SpreadsheetDocumentType.Workbook))
+           SpreadsheetDocument.Create(info.FileName, SpreadsheetDocumentType.Workbook))
             {
                 // Создаем книгу (в ней хранятся листы)
                 WorkbookPart workbookpart = spreadsheetDocument.AddWorkbookPart();

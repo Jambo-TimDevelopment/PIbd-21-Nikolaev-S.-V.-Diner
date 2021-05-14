@@ -68,7 +68,7 @@ namespace AbstractDinerView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[4].Value);
+                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 try
                 {
                     _orderLogic.TakeOrderInWork(new ChangeStatusBindingModel
@@ -88,7 +88,7 @@ namespace AbstractDinerView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[4].Value);
+                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 try
                 {
                     _orderLogic.FinishOrder(new ChangeStatusBindingModel
@@ -108,7 +108,7 @@ namespace AbstractDinerView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[4].Value);
+                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 try
                 {
                     _orderLogic.PayOrder(new ChangeStatusBindingModel { OrderId = id });
@@ -121,7 +121,6 @@ namespace AbstractDinerView
                 }
             }
         }
-        
         private void ButtonRef_Click(object sender, EventArgs e)
         {
             LoadData();
@@ -143,18 +142,21 @@ namespace AbstractDinerView
                 }
             }
         }
-        
         private void ComponentProductsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormReportSnackComponents>();
             form.ShowDialog();
         }
-
         private void OrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormReportOrders>();
             form.ShowDialog();
         }
 
+        private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormClients>();
+            form.ShowDialog();
+        }
     }
 }

@@ -15,6 +15,6 @@ namespace AbstractDinerDatabaseImplement.Models
         public string ComponentName { get; set; }
         
         [ForeignKey("ComponentId")]
-        public virtual List<SnackComponent> ProductComponents { get; set; }
+        public virtual List<SnackComponent> SnackComponents { get; set; }
     }
 }

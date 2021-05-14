@@ -56,7 +56,7 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
             {
                 FileName = model.FileName,
                 Title = "Список компонент",
-                Snacks = _productStorage.GetFullList()
+                Components = _componentStorage.GetFullList()
             });
         }
         

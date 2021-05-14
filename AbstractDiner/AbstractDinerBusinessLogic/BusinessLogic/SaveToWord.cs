@@ -22,27 +22,21 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
                 Body docBody = mainPart.Document.AppendChild(new Body());
                 docBody.AppendChild(CreateParagraph(new WordParagraph
                 {
-                    Texts = new List<(string, WordTextProperties)> 
-                    { 
-                        (
-                            info.Title, new
-                            WordTextProperties {Bold = true, Size = "24", } 
-                        ) 
-                    },
+                    Texts = new List<(string, WordTextProperties)> { (info.Title, new
+                        WordTextProperties {Bold = true, Size = "24", } ) },
                     TextProperties = new WordTextProperties
                     {
                         Size = "24",
                         JustificationValues = JustificationValues.Center
                     }
                 }));
-                foreach (var snack in info.Snacks)
+                foreach (var component in info.Components)
                 {
                     docBody.AppendChild(CreateParagraph(new WordParagraph
                     {
                         Texts = new List<(string, WordTextProperties)> 
                         {
-                            (snack.SnackName + ": ", new WordTextProperties { Bold = true, Size = "24" }),
-                            (snack.Price.ToString(), new WordTextProperties { Bold = false, Size = "24" })
+                            (component.ComponentName, new WordTextProperties { Bold = true, Size = "24" }) 
                         },
                         TextProperties = new WordTextProperties
                         {
