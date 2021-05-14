@@ -121,6 +121,7 @@ namespace AbstractDinerView
                 }
             }
         }
+        
         private void ButtonRef_Click(object sender, EventArgs e)
         {
             LoadData();
@@ -142,11 +143,13 @@ namespace AbstractDinerView
                 }
             }
         }
+        
         private void ComponentProductsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormReportSnackComponents>();
             form.ShowDialog();
         }
+
         private void OrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormReportOrders>();

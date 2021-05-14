@@ -65,7 +65,6 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
                 DateCreate = order.DateCreate,
                 DateImplement = DateTime.Now,
                 Status = OrderStatus.Выполняется,
-                ClientId = order.ClientId
             });
         }
         public void FinishOrder(ChangeStatusBindingModel model)
@@ -91,7 +90,6 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
                 DateCreate = order.DateCreate,
                 DateImplement = order.DateImplement,
                 Status = OrderStatus.Готов,
-                ClientId = order.ClientId
             });
         }
         public void PayOrder(ChangeStatusBindingModel model)
@@ -117,7 +115,6 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
                 DateCreate = order.DateCreate,
                 DateImplement = order.DateImplement,
                 Status = OrderStatus.Оплачен,
-                ClientId = order.ClientId
             });
         }
     }
