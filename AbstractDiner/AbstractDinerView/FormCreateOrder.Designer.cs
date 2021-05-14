@@ -36,11 +36,13 @@
             this.comboBoxSnack = new System.Windows.Forms.ComboBox();
             this.textBoxCount = new System.Windows.Forms.TextBox();
             this.textBoxSum = new System.Windows.Forms.TextBox();
+            this.comboBoxClient = new System.Windows.Forms.ComboBox();
+            this.labelClient = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ButtonCancel
             // 
-            this.ButtonCancel.Location = new System.Drawing.Point(231, 146);
+            this.ButtonCancel.Location = new System.Drawing.Point(232, 193);
             this.ButtonCancel.Name = "ButtonCancel";
             this.ButtonCancel.Size = new System.Drawing.Size(89, 35);
             this.ButtonCancel.TabIndex = 0;
@@ -50,7 +52,7 @@
             // 
             // ButtonSave
             // 
-            this.ButtonSave.Location = new System.Drawing.Point(125, 146);
+            this.ButtonSave.Location = new System.Drawing.Point(126, 193);
             this.ButtonSave.Name = "ButtonSave";
             this.ButtonSave.Size = new System.Drawing.Size(100, 35);
             this.ButtonSave.TabIndex = 1;
@@ -85,11 +87,11 @@
             this.labelPrice.TabIndex = 4;
             this.labelPrice.Text = "Сумма";
             // 
-            // comboBoxProduct
+            // comboBoxSnack
             // 
             this.comboBoxSnack.FormattingEnabled = true;
             this.comboBoxSnack.Location = new System.Drawing.Point(121, 10);
-            this.comboBoxSnack.Name = "comboBoxProduct";
+            this.comboBoxSnack.Name = "comboBoxSnack";
             this.comboBoxSnack.Size = new System.Drawing.Size(219, 28);
             this.comboBoxSnack.TabIndex = 5;
             this.comboBoxSnack.SelectedIndexChanged += new System.EventHandler(this.ComboBoxSelect_SelectedIndexChanged);
@@ -109,11 +111,30 @@
             this.textBoxSum.Size = new System.Drawing.Size(219, 26);
             this.textBoxSum.TabIndex = 7;
             // 
+            // comboBoxClient
+            // 
+            this.comboBoxClient.FormattingEnabled = true;
+            this.comboBoxClient.Location = new System.Drawing.Point(125, 159);
+            this.comboBoxClient.Name = "comboBoxClient";
+            this.comboBoxClient.Size = new System.Drawing.Size(219, 28);
+            this.comboBoxClient.TabIndex = 8;
+            // 
+            // labelClient
+            // 
+            this.labelClient.AutoSize = true;
+            this.labelClient.Location = new System.Drawing.Point(13, 162);
+            this.labelClient.Name = "labelClient";
+            this.labelClient.Size = new System.Drawing.Size(98, 30);
+            this.labelClient.TabIndex = 9;
+            this.labelClient.Text = "Клиент";
+            // 
             // FormCreateOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(352, 194);
+            this.ClientSize = new System.Drawing.Size(352, 240);
+            this.Controls.Add(this.labelClient);
+            this.Controls.Add(this.comboBoxClient);
             this.Controls.Add(this.textBoxSum);
             this.Controls.Add(this.textBoxCount);
             this.Controls.Add(this.comboBoxSnack);
@@ -137,8 +158,11 @@
         private System.Windows.Forms.Label labelProduct;
         private System.Windows.Forms.Label labelCount;
         private System.Windows.Forms.Label labelPrice;
+
         private System.Windows.Forms.ComboBox comboBoxSnack;
         private System.Windows.Forms.TextBox textBoxCount;
         private System.Windows.Forms.TextBox textBoxSum;
+        private System.Windows.Forms.ComboBox comboBoxClient;
+        private System.Windows.Forms.Label labelClient;
     }
 }

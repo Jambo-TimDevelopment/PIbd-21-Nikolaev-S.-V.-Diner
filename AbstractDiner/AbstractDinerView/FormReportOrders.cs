@@ -32,9 +32,9 @@ namespace AbstractDinerView
             {
                 ReportParameter parameter = new ReportParameter("ReportParameterPeriod",
                 "c " +
-                dateTimePickerFrom.Value.ToShortDateString() +
+               dateTimePickerFrom.Value.ToShortDateString() +
                 " по " +
-                dateTimePickerTo.Value.ToShortDateString());
+               dateTimePickerTo.Value.ToShortDateString());
                 reportViewer1.LocalReport.SetParameters(parameter);
                 var dataSource = logic.GetOrders(new ReportBindingModel
                 {

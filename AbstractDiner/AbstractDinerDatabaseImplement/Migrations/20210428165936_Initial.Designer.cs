@@ -10,16 +10,40 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AbstractDinerDatabaseImplement.Migrations
 {
     [DbContext(typeof(AbstractDinerDatabase))]
-    [Migration("20210514104027_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210428165936_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.12")
+                .HasAnnotation("ProductVersion", "3.1.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("AbstractDinerDatabaseImplement.Models.Client", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClientFIO")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clients");
+                });
 
             modelBuilder.Entity("AbstractDinerDatabaseImplement.Models.Component", b =>
                 {
@@ -43,6 +67,9 @@ namespace AbstractDinerDatabaseImplement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Count")
                         .HasColumnType("int");
@@ -69,6 +96,8 @@ namespace AbstractDinerDatabaseImplement.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
 
                     b.HasIndex("SnackId");
 
@@ -121,7 +150,13 @@ namespace AbstractDinerDatabaseImplement.Migrations
 
             modelBuilder.Entity("AbstractDinerDatabaseImplement.Models.Order", b =>
                 {
-                    b.HasOne("AbstractDinerDatabaseImplement.Models.Snack", null)
+                    b.HasOne("AbstractDinerDatabaseImplement.Models.Client", "Client")
+                        .WithMany("Order")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AbstractDinerDatabaseImplement.Models.Snack", "Snack")
                         .WithMany("Orders")
                         .HasForeignKey("SnackId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -131,7 +166,7 @@ namespace AbstractDinerDatabaseImplement.Migrations
             modelBuilder.Entity("AbstractDinerDatabaseImplement.Models.SnackComponent", b =>
                 {
                     b.HasOne("AbstractDinerDatabaseImplement.Models.Component", "Component")
-                        .WithMany("ProductComponents")
+                        .WithMany("SnackComponents")
                         .HasForeignKey("ComponentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

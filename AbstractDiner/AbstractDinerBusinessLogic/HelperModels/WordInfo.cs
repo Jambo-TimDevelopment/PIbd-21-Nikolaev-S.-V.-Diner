@@ -12,7 +12,5 @@ namespace AbstractDinerBusinessLogic.HelperModels
         public string Title { get; set; }
         
         public List<ComponentViewModel> Components { get; set; }
-
-        public List<SnackViewModel> Snacks { get; set; }
     }
 }
