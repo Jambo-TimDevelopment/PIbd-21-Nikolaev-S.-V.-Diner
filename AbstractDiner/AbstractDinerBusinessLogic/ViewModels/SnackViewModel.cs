@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AbstractDinerBusinessLogic.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.Serialization;
@@ -16,13 +17,13 @@ namespace AbstractDinerBusinessLogic.ViewModels
         public int Id { get; set; }
 
         [DataMember]
-        [DisplayName("Название изделия")]
+        [Column(title: "Название изделия", gridViewAutoSize: GridViewAutoSize.Fill)]
         public string SnackName { get; set; }
-
+        
         [DataMember]
-        [DisplayName("Цена")]
+        [Column(title: "Цена", width: 50)]
         public decimal Price { get; set; }
-
+        
         [DataMember]
         public Dictionary<int, (string, int)> SnackComponents { get; set; }
     }

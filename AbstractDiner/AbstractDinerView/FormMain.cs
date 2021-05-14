@@ -17,37 +17,32 @@ namespace AbstractDinerView
 
         private ReportLogic _reportLogic;
 
-        public FormMain(OrderLogic orderLogic, ReportLogic reportLogic, WorkModeling modeling)
+        private BackUpAbstractLogic _backUpAbstractLogic;
+
+        public FormMain(OrderLogic orderLogic, ReportLogic reportLogic, WorkModeling modeling, BackUpAbstractLogic backUpAbstractLogic)
         {
             InitializeComponent();
             this._orderLogic = orderLogic;
             this._reportLogic = reportLogic;
             this.modelingWork = modeling;
+            this._backUpAbstractLogic = backUpAbstractLogic;
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
             LoadData();
-        }
+        }        
 
-        private void LoadData()
+       private void LoadData()
         {
             try
             {
-                var list = _orderLogic.Read(null);
-                if (list != null)
-                {
-                    dataGridView.DataSource = list;
-                    dataGridView.Columns[1].Visible = false;
-                    dataGridView.Columns[2].Visible = false;
-                    dataGridView.Columns[3].Visible = false;
-                    dataGridView.Columns[4].Visible = false;
-                    dataGridView.Columns[5].Visible = false;
-                }
+                Program.ConfigGrid(_orderLogic.Read(null), dataGridView);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
             }
         }
 
@@ -183,6 +178,28 @@ namespace AbstractDinerView
         {
             var form = Container.Resolve<FormMessages>();
             form.ShowDialog();
+        }
+
+        private void создатьБекапToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_backUpAbstractLogic != null)
+                {
+                    var fbd = new FolderBrowserDialog();
+                    if (fbd.ShowDialog() == DialogResult.OK)
+                    {
+                        _backUpAbstractLogic.CreateArchive(fbd.SelectedPath);
+                        MessageBox.Show("Бекап создан", "Сообщение",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
+            }
         }
     }
 }

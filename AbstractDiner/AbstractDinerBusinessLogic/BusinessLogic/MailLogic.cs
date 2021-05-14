@@ -125,7 +125,7 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
                     try
                     {
                         client.Connect(info.PopHost, info.PopPort,
-                        SecureSocketOptions.SslOnConnect);
+                       SecureSocketOptions.SslOnConnect);
                         client.Authenticate(mailLogin, mailPassword);
                         for (int i = 0; i < client.Count; i++)
                         {
