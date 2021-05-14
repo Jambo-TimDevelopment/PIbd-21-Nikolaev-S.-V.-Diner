@@ -4,14 +4,16 @@ using AbstractDinerDatabaseImplement;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AbstractDinerDatabaseImplement.Migrations
 {
     [DbContext(typeof(AbstractDinerDatabase))]
-    partial class AbstractDinerDatabaseModelSnapshot : ModelSnapshot
+    [Migration("20210508134634_MailMassage")]
+    partial class MailMassage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

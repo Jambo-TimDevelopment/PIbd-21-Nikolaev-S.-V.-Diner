@@ -22,6 +22,7 @@ namespace AbstractDinerDatabaseImplement.Implements
                     Id = rec.Id,
                     SnackName = rec.Snack.SnackName,
                     SnackId = rec.SnackId,
+                    ImplementerId = rec.ImplementerId,
                     Count = rec.Count,
                     Sum = rec.Sum,
                     Status = rec.Status,
@@ -29,7 +30,6 @@ namespace AbstractDinerDatabaseImplement.Implements
                     DateImplement = rec.DateImplement,
                     ClientId = rec.ClientId,
                     ClientFIO = rec.Client.ClientFIO,
-                    ImplementerId = rec.ImplementerId,
                     ImplementerFIO = context.Implementers.FirstOrDefault(r => r.Id == rec.ImplementerId).ImplementerFIO,
                 })
                 .ToList();
@@ -64,7 +64,7 @@ namespace AbstractDinerDatabaseImplement.Implements
                     Count = rec.Count,
                     DateCreate = rec.DateCreate,
                     DateImplement = rec.DateImplement,
-                    ProductId = rec.SnackId,
+                    SnackId = rec.SnackId,
                     SnackName = rec.Snack.SnackName,
                     ClientId = rec.ClientId,
                     ClientFIO = rec.Client.ClientFIO,
@@ -99,10 +99,6 @@ namespace AbstractDinerDatabaseImplement.Implements
                     Status = order.Status,
                     DateCreate = order.DateCreate,
                     DateImplement = order.DateImplement,
-                    ClientId = order.ClientId,
-                    ClientFIO = context.Clients.FirstOrDefault(rec => rec.Id == order.ClientId)?.ClientFIO,
-                    ImplementerId = order.ImplementerId,
-                    ImplementerFIO = context.Implementers.FirstOrDefault(rec => rec.Id == order.ImplementerId)?.ImplementerFIO,
                 } :
                 null;
             }
