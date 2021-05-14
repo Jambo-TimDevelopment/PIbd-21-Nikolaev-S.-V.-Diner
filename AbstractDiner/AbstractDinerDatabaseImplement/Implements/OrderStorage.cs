@@ -25,7 +25,7 @@ namespace AbstractDinerDatabaseImplement.Implements
                     Sum = rec.Sum,
                     Status = rec.Status,
                     DateCreate = rec.DateCreate,
-                    DateImplement = rec.DateImplement,
+                    DateImplement = rec.DateImplement,                    
                 })
                 .ToList();
             }
@@ -35,6 +35,26 @@ namespace AbstractDinerDatabaseImplement.Implements
             if (model == null)
             {
                 return null;
+            }
+            if (model.DateFrom != null && model.DateTo != null)
+            {
+                using (var context = new AbstractDinerDatabase())
+                {
+                    return context.Orders
+                        .Where(rec => rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo)
+                        .Select(rec => new OrderViewModel
+                        {
+                            Id = rec.Id,
+                            SnackId = rec.SnackId,
+                            SnackName = context.Snacks.FirstOrDefault(pr => pr.Id == rec.SnackId).SnackName,
+                            Count = rec.Count,
+                            Sum = rec.Sum,
+                            Status = rec.Status,
+                            DateCreate = rec.DateCreate,
+                            DateImplement = rec.DateImplement,
+                        })
+                        .ToList();
+                }
             }
             using (var context = new AbstractDinerDatabase())
             {
@@ -133,6 +153,7 @@ namespace AbstractDinerDatabaseImplement.Implements
                 }
             }
         }
+
         private Order CreateModel(OrderBindingModel model, Order order)
         {
             if (model == null)

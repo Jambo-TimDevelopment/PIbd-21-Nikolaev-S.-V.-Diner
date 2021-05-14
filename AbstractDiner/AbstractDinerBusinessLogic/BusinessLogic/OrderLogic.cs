@@ -37,7 +37,8 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
                 Count = model.Count,
                 Sum = model.Sum,
                 DateCreate = DateTime.Now,
-                Status = OrderStatus.Принят
+                Status = OrderStatus.Принят,
+                ClientId = model.ClientId
             });
         }
 
@@ -63,7 +64,7 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
                 DateImplement = DateTime.Now,
-                Status = OrderStatus.Выполняется
+                Status = OrderStatus.Выполняется,
             });
         }
         public void FinishOrder(ChangeStatusBindingModel model)
@@ -88,7 +89,7 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
                 DateImplement = order.DateImplement,
-                Status = OrderStatus.Готов
+                Status = OrderStatus.Готов,
             });
         }
         public void PayOrder(ChangeStatusBindingModel model)
@@ -113,7 +114,7 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
                 DateImplement = order.DateImplement,
-                Status = OrderStatus.Оплачен
+                Status = OrderStatus.Оплачен,
             });
         }
     }

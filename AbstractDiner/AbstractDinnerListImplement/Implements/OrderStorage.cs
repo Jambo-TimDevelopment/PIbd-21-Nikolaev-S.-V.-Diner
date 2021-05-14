@@ -35,7 +35,8 @@ namespace AbstractDinnerListImplement.Implements
             List<OrderViewModel> result = new List<OrderViewModel>();
             foreach (var order in source.Orders)
             {
-                if (order.ProductId == model.SnackId)
+                if (order.ProductId == model.SnackId 
+                    && order.DateCreate >= model.DateFrom && order.DateCreate <= model.DateTo)
                 {
                     result.Add(CreateModel(order));
                 }

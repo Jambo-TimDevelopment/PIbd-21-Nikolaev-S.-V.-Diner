@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AbstractDinerDatabaseImplement.Migrations
 {
     [DbContext(typeof(AbstractDinerDatabase))]
-    [Migration("20210310124000_InitialCreate")]
+    [Migration("20210514104027_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

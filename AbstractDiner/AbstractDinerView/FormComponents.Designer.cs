@@ -54,7 +54,7 @@
             this.ButtonRef.TabIndex = 1;
             this.ButtonRef.Text = "Изменить";
             this.ButtonRef.UseVisualStyleBackColor = true;
-            this.ButtonRef.Click += new System.EventHandler(this.ButtonUpd_Click);
+            this.ButtonRef.Click += new System.EventHandler(this.ButtonRef_Click);
             // 
             // ButtonDel
             // 
@@ -74,7 +74,7 @@
             this.ButtonUpd.TabIndex = 3;
             this.ButtonUpd.Text = "Обновить";
             this.ButtonUpd.UseVisualStyleBackColor = true;
-            this.ButtonUpd.Click += new System.EventHandler(this.ButtonRef_Click);
+            this.ButtonUpd.Click += new System.EventHandler(this.ButtonUpd_Click);
             // 
             // dataGridView
             // 
