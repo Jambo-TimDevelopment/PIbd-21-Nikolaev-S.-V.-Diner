@@ -1,5 +1,6 @@
 ﻿using AbstractDinerDatabaseImplement.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace AbstractDinerDatabaseImplement
 {
@@ -25,5 +26,7 @@ namespace AbstractDinerDatabaseImplement
         public virtual DbSet<Client> Clients { set; get; }
 
         public virtual DbSet<Implementer> Implementers { set; get; }
+
+        public virtual DbSet<MessageInfo> MessageInfoes { set; get; }
     }
 }

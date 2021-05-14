@@ -11,6 +11,7 @@ namespace AbstractShowClientApp
     public static class APIClient
     {
         private static readonly HttpClient client = new HttpClient();
+
         public static void Connect(IConfiguration configuration)
         {
             client.BaseAddress = new Uri(configuration["IPAddress"]);
@@ -18,6 +19,7 @@ namespace AbstractShowClientApp
             client.DefaultRequestHeaders.Accept.Add(new
            MediaTypeWithQualityHeaderValue("application/json"));
         }
+
         public static T GetRequest<T>(string requestUrl)
         {
             var response = client.GetAsync(requestUrl);
@@ -31,6 +33,7 @@ namespace AbstractShowClientApp
                 throw new Exception(result);
             }
         }
+
         public static void PostRequest<T>(string requestUrl, T model)
         {
             var json = JsonConvert.SerializeObject(model);
