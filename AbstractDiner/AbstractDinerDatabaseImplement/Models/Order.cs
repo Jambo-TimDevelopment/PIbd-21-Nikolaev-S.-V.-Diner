@@ -19,6 +19,10 @@ namespace AbstractDinerDatabaseImplement.Models
 
         public virtual Snack Snack{ get; set; }
 
+        public virtual Implementer Implementer { get; set; }
+
+        public int? ImplementerId { get; set; }
+
         public int SnackId { get; set; }
         
         public string OrderName { get; set; }

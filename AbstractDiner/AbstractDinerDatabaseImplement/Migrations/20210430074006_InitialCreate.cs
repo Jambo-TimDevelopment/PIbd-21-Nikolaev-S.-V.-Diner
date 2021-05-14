@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AbstractDinerDatabaseImplement.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -36,6 +36,21 @@ namespace AbstractDinerDatabaseImplement.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Implementers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ImplementerFIO = table.Column<string>(nullable: true),
+                    WorkingTime = table.Column<int>(nullable: false),
+                    PauseTime = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Implementers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Snacks",
                 columns: table => new
                 {
@@ -56,6 +71,7 @@ namespace AbstractDinerDatabaseImplement.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ClientId = table.Column<int>(nullable: false),
+                    ImplementerId = table.Column<int>(nullable: true),
                     SnackId = table.Column<int>(nullable: false),
                     OrderName = table.Column<string>(nullable: true),
                     SnackName = table.Column<string>(nullable: true),
@@ -74,6 +90,12 @@ namespace AbstractDinerDatabaseImplement.Migrations
                         principalTable: "Clients",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Orders_Implementers_ImplementerId",
+                        column: x => x.ImplementerId,
+                        principalTable: "Implementers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Orders_Snacks_SnackId",
                         column: x => x.SnackId,
@@ -115,6 +137,11 @@ namespace AbstractDinerDatabaseImplement.Migrations
                 column: "ClientId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Orders_ImplementerId",
+                table: "Orders",
+                column: "ImplementerId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Orders_SnackId",
                 table: "Orders",
                 column: "SnackId");
@@ -140,6 +167,9 @@ namespace AbstractDinerDatabaseImplement.Migrations
 
             migrationBuilder.DropTable(
                 name: "Clients");
+
+            migrationBuilder.DropTable(
+                name: "Implementers");
 
             migrationBuilder.DropTable(
                 name: "Components");
