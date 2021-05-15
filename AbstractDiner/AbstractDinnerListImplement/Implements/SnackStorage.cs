@@ -34,11 +34,11 @@ namespace AbstractDinnerListImplement.Implements
                 return null;
             }
             List<SnackViewModel> result = new List<SnackViewModel>();
-            foreach (var snack in source.Snacks)
+            foreach (var product in source.Snacks)
             {
-                if (snack.SnacksName.Contains(model.SnackName))
+                if (product.SnacksName.Contains(model.SnackName))
                 {
-                    result.Add(CreateModel(snack));
+                    result.Add(CreateModel(product));
                 }
             }
             return result;
@@ -136,12 +136,11 @@ namespace AbstractDinnerListImplement.Implements
             }
             return snack;
         }
-        
+
         private SnackViewModel CreateModel(Snack snack)
         {
             // требуется дополнительно получить список компонентов для изделия с названиями и их количество
-        Dictionary<int, (string, int)> snackComponents = new
-        Dictionary<int, (string, int)>();
+            Dictionary<int, (string, int)> snackComponents = new Dictionary<int, (string, int)>();
             foreach (var pc in snack.SnackComponents)
             {
                 string componentName = string.Empty;

@@ -6,20 +6,20 @@ using Unity;
 
 namespace AbstractDinerView
 {
-    public partial class FormSnacks : Form
+    public partial class FormWarehouses : Form
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
 
-        private readonly SnackLogic logic;
+        private readonly WarehouseLogic logic;
 
-        public FormSnacks(SnackLogic logic)
+        public FormWarehouses(WarehouseLogic logic)
         {
             InitializeComponent();
             this.logic = logic;
         }
 
-        private void FormSnacks_Load(object sender, EventArgs e)
+        private void FormWharehouses_Load(object sender, EventArgs e)
         {
             LoadData();
         }
@@ -33,7 +33,8 @@ namespace AbstractDinerView
                 {
                     dataGridView.DataSource = list;
                     dataGridView.Columns[0].Visible = false;
-                    dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridView.Columns[4].Visible = false;
                 }
             }
             catch (Exception ex)
@@ -44,18 +45,16 @@ namespace AbstractDinerView
 
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormSnack>();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                LoadData();
-            }
+            var form = Container.Resolve<FormWarehouse>();
+            form.ShowDialog();
+            LoadData();
         }
 
-        private void ButtonUpd_Click(object sender, EventArgs e)
+        private void ButtonUpdate_Click(object sender, EventArgs e)
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                var form = Container.Resolve<FormSnack>();
+                var form = Container.Resolve<FormWarehouse>();
                 form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -63,18 +62,17 @@ namespace AbstractDinerView
                 }
             }
         }
+
         private void ButtonDel_Click(object sender, EventArgs e)
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    int id =
-                   Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+                    int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        logic.Delete(new SnackBindingModel { Id = id });
+                        logic.Delete(new WarehouseBindingModel { Id = id });
                     }
                     catch (Exception ex)
                     {
@@ -85,7 +83,7 @@ namespace AbstractDinerView
             }
         }
 
-        private void ButtonRef_Click(object sender, EventArgs e)
+        private void ButtonRefresh_Click(object sender, EventArgs e)
         {
             LoadData();
         }
