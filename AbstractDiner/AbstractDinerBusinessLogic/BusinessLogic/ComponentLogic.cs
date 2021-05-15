@@ -9,7 +9,6 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
     public class ComponentLogic
     {
         private readonly IComponentStorage _componentStorage;
-
         public ComponentLogic(IComponentStorage componentStorage)
         {
             _componentStorage = componentStorage;

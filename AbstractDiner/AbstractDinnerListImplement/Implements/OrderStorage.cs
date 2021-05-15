@@ -35,7 +35,7 @@ namespace AbstractDinnerListImplement.Implements
             List<OrderViewModel> result = new List<OrderViewModel>();
             foreach (var order in source.Orders)
             {
-                if (order.SnackId == model.SnackId)
+                if (order.ProductId == model.SnackId)
                 {
                     result.Add(CreateModel(order));
                 }
@@ -51,7 +51,7 @@ namespace AbstractDinnerListImplement.Implements
             }
             foreach (var order in source.Orders)
             {
-                if (order.Id == model.Id || order.SnackId == model.SnackId)
+                if (order.Id == model.Id || order.ProductId == model.SnackId)
                 {
                     return CreateModel(order);
                 }
@@ -104,7 +104,7 @@ namespace AbstractDinnerListImplement.Implements
 
         private Order CreateModel(OrderBindingModel model, Order order)
         {
-            order.SnackId = model.SnackId;
+            order.ProductId = model.SnackId;
             order.Count = model.Count;
             order.Status = model.Status;
             order.Sum = model.Sum;
@@ -115,26 +115,24 @@ namespace AbstractDinnerListImplement.Implements
 
         private OrderViewModel CreateModel(Order order)
         {
-            string ResultSnackName = "";
+            string ResultProductName = "";
 
-            foreach (var snack in source.Snacks)
+            foreach (var product in source.Snacks)
             {
-                if (order.SnackId == snack.Id)
+                if (order.ProductId == product.Id)
                 {
-                    ResultSnackName = snack.SnacksName;
+                    ResultProductName = product.SnacksName;
                 }
             }
 
             return new OrderViewModel
             {
-                Id = order.Id,
-                SnackId = order.SnackId,
-                SnackName = ResultSnackName,
-                Count = order.Count,
-                Status = order.Status,
+                SnackName = ResultProductName,
                 Sum = order.Sum,
+                Status = order.Status,
                 DateCreate = order.DateCreate,
                 DateImplement = order.DateImplement,
+                Count = order.Count
             };
         }
     }
