@@ -30,5 +30,4 @@ namespace AbstractDinnerFileImplement.Models
             return instance;
         }
     }
-
 }

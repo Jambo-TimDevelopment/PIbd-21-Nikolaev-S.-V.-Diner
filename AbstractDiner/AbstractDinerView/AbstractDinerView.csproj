@@ -186,6 +186,12 @@
     <Compile Include="FormCreateOrder.Designer.cs">
       <DependentUpon>FormCreateOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormWarehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormWarehouse.Designer.cs">
+      <DependentUpon>FormWarehouse.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +216,18 @@
     <Compile Include="FormSnacks.Designer.cs">
       <DependentUpon>FormSnacks.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTopUpWarehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTopUpWarehouse.Designer.cs">
+      <DependentUpon>FormTopUpWarehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormWarehouses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormWarehouses.Designer.cs">
+      <DependentUpon>FormWarehouses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormComponent.resx">
@@ -220,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCreateOrder.resx">
       <DependentUpon>FormCreateOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormWarehouse.resx">
+      <DependentUpon>FormWarehouse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -232,6 +253,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSnacks.resx">
       <DependentUpon>FormSnacks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTopUpWarehouse.resx">
+      <DependentUpon>FormTopUpWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormWarehouses.resx">
+      <DependentUpon>FormWarehouses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -265,6 +292,7 @@
       <Project>{486d7db4-82d3-407c-aa92-e69bff8ceaf7}</Project>
       <Name>AbstractDinerDatabaseImplement</Name>
     </ProjectReference>
+
     <ProjectReference Include="..\AbstractDinerFileImplement\AbstractDinerFileImplement.csproj">
       <Project>{4d4f9246-fc44-4f0a-a778-a0ef949ed934}</Project>
       <Name>AbstractDinerFileImplement</Name>

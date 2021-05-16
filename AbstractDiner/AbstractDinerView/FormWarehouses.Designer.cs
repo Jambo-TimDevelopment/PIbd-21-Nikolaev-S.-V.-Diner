@@ -1,7 +1,7 @@
 ﻿
 namespace AbstractDinerView
 {
-    partial class FormSnacks
+    partial class FormWarehouses
     {
         /// <summary>
         /// Required designer variable.
@@ -40,67 +40,66 @@ namespace AbstractDinerView
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(12, 14);
+            this.dataGridView.Location = new System.Drawing.Point(12, 13);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowHeadersWidth = 62;
             this.dataGridView.RowTemplate.Height = 28;
             this.dataGridView.Size = new System.Drawing.Size(643, 425);
-            this.dataGridView.TabIndex = 5;
+            this.dataGridView.TabIndex = 9;
             // 
             // ButtonUpd
             // 
-            this.ButtonUpd.Location = new System.Drawing.Point(661, 386);
+            this.ButtonUpd.Location = new System.Drawing.Point(661, 401);
             this.ButtonUpd.Name = "ButtonUpd";
             this.ButtonUpd.Size = new System.Drawing.Size(97, 37);
-            this.ButtonUpd.TabIndex = 9;
+            this.ButtonUpd.TabIndex = 8;
             this.ButtonUpd.Text = "Обновить";
             this.ButtonUpd.UseVisualStyleBackColor = true;
-            this.ButtonUpd.Click += new System.EventHandler(this.ButtonRef_Click);
+            this.ButtonUpd.Click += new System.EventHandler(this.ButtonRefresh_Click);
             // 
             // ButtonDel
             // 
-            this.ButtonDel.Location = new System.Drawing.Point(661, 254);
+            this.ButtonDel.Location = new System.Drawing.Point(661, 269);
             this.ButtonDel.Name = "ButtonDel";
             this.ButtonDel.Size = new System.Drawing.Size(97, 40);
-            this.ButtonDel.TabIndex = 8;
+            this.ButtonDel.TabIndex = 7;
             this.ButtonDel.Text = "Удалить";
             this.ButtonDel.UseVisualStyleBackColor = true;
             this.ButtonDel.Click += new System.EventHandler(this.ButtonDel_Click);
             // 
             // ButtonRef
             // 
-            this.ButtonRef.Location = new System.Drawing.Point(661, 129);
+            this.ButtonRef.Location = new System.Drawing.Point(661, 144);
             this.ButtonRef.Name = "ButtonRef";
             this.ButtonRef.Size = new System.Drawing.Size(97, 37);
-            this.ButtonRef.TabIndex = 7;
+            this.ButtonRef.TabIndex = 6;
             this.ButtonRef.Text = "Изменить";
             this.ButtonRef.UseVisualStyleBackColor = true;
-            this.ButtonRef.Click += new System.EventHandler(this.ButtonUpd_Click);
+            this.ButtonRef.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
             // ButtonAdd
             // 
             this.ButtonAdd.Location = new System.Drawing.Point(661, 13);
             this.ButtonAdd.Name = "ButtonAdd";
             this.ButtonAdd.Size = new System.Drawing.Size(97, 39);
-            this.ButtonAdd.TabIndex = 6;
+            this.ButtonAdd.TabIndex = 5;
             this.ButtonAdd.Text = "Добавить";
             this.ButtonAdd.UseVisualStyleBackColor = true;
             this.ButtonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
-            // FormSnacks
+            // FormWarehouses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(768, 450);
+            this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.ButtonUpd);
             this.Controls.Add(this.ButtonDel);
             this.Controls.Add(this.ButtonRef);
             this.Controls.Add(this.ButtonAdd);
-            this.Controls.Add(this.dataGridView);
-            this.Name = "FormSnacks";
-            this.Text = "Изделия";
-            this.Load += new System.EventHandler(this.FormSnacks_Load);
+            this.Name = "FormWarehouses";
+            this.Text = "Склады";
+            this.Load += new System.EventHandler(this.FormWharehouses_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 

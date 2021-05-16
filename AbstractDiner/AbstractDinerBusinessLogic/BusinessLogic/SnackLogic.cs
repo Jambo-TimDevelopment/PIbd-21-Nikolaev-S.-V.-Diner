@@ -48,17 +48,17 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
             }
         }
 
-        public void Delete(SnackBindingModel product)
+        public void Delete(SnackBindingModel snack)
         {
             var element = _snackStorage.GetElement(new SnackBindingModel
             {
-                Id = product.Id
+                Id = snack.Id
             });
             if (element == null)
             {
                 throw new Exception("Элемент не найден");
             }
-            _snackStorage.Delete(product);
+            _snackStorage.Delete(snack);
         }
     }
 }

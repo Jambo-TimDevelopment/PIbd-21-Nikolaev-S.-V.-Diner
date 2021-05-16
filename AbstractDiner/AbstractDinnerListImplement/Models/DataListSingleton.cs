@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AbstractDinnerListImplement.Implements;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,12 +14,15 @@ namespace AbstractDinnerListImplement.Models
         public List<Order> Orders { get; set; }
         
         public List<Snack> Snacks { get; set; }
+
+        public List<Warehouse> Warehouses { get; set; }
         
         private DataListSingleton()
         {
             Components = new List<Component>();
             Orders = new List<Order>();
             Snacks = new List<Snack>();
+            Warehouses = new List<Warehouse>();
         }
         
         public static DataListSingleton GetInstance()

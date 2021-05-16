@@ -1,4 +1,4 @@
-﻿namespace AbstractDinnerFileImplement.Models
+﻿namespace AbstractDinerFileImplement.Models
 {
     /// <summary>
     /// Компонент, требуемый для изготовления изделия
@@ -6,6 +6,7 @@
     public class Component
     {
         public int Id { get; set; }
+
         public string ComponentName { get; set; }
     }
 }

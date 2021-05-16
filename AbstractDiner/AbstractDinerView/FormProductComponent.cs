@@ -7,7 +7,7 @@ using Unity;
 
 namespace AbstractDinerView
 {
-    public partial class FormSnackComponent : Form
+    public partial class FormProductComponent : Form
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
@@ -25,7 +25,8 @@ namespace AbstractDinerView
                 textBoxCount.Text = value.ToString();
             }
         }
-        public FormSnackComponent(ComponentLogic logic)
+
+        public FormProductComponent(ComponentLogic logic)
         {
             InitializeComponent();
             List<ComponentViewModel> list = logic.Read(null);

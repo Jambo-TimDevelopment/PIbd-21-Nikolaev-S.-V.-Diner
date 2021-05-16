@@ -121,7 +121,7 @@ namespace AbstractDinnerListImplement.Implements
             {
                 if (order.ProductId == product.Id)
                 {
-                    ResultProductName = product.SnackName;
+                    ResultProductName = product.SnacksName;
                 }
             }
 

@@ -12,6 +12,5 @@ namespace AbstractDinerBusinessLogic.Interfaces
         void Insert(SnackBindingModel model);
         void Update(SnackBindingModel model);
         void Delete(SnackBindingModel model);
- }
-
+    }
 }

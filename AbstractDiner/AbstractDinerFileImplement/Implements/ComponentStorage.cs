@@ -1,7 +1,7 @@
 ﻿using AbstractDinerBusinessLogic.BindingModels;
 using AbstractDinerBusinessLogic.Interfaces;
 using AbstractDinerBusinessLogic.ViewModels;
-using AbstractDinnerFileImplement.Models;
+using AbstractDinerFileImplement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +16,12 @@ namespace AbstractDinerFileImplement.Implements
         {
             source = FileDataListSingleton.GetInstance();
         }
+        
         public List<ComponentViewModel> GetFullList()
         {
             return source.Components.Select(CreateModel).ToList();
         }
+       
         public List<ComponentViewModel> GetFilteredList(ComponentBindingModel model)
         {
             if (model == null)
@@ -29,6 +31,7 @@ namespace AbstractDinerFileImplement.Implements
             return source.Components.Where(rec => rec.ComponentName.Contains(model.ComponentName))
                 .Select(CreateModel).ToList();
         }
+        
         public ComponentViewModel GetElement(ComponentBindingModel model)
         {
             if (model == null)
@@ -40,6 +43,7 @@ namespace AbstractDinerFileImplement.Implements
            rec.Id == model.Id);
             return component != null ? CreateModel(component) : null;
         }
+        
         public void Insert(ComponentBindingModel model)
         {
             int maxId = source.Components.Count > 0 ? source.Components.Max(rec =>
@@ -47,6 +51,7 @@ namespace AbstractDinerFileImplement.Implements
             var element = new Component { Id = maxId + 1 };
             source.Components.Add(CreateModel(model, element));
         }
+        
         public void Update(ComponentBindingModel model)
         {
             var element = source.Components.FirstOrDefault(rec => rec.Id == model.Id);
@@ -56,6 +61,7 @@ namespace AbstractDinerFileImplement.Implements
             }
             CreateModel(model, element);
         }
+        
         public void Delete(ComponentBindingModel model)
         {
             Component element = source.Components.FirstOrDefault(rec => rec.Id == model.Id);
@@ -68,11 +74,13 @@ namespace AbstractDinerFileImplement.Implements
                 throw new Exception("Элемент не найден");
             }
         }
+       
         private Component CreateModel(ComponentBindingModel model, Component component)
         {
             component.ComponentName = model.ComponentName;
             return component;
         }
+       
         private ComponentViewModel CreateModel(Component component)
         {
             return new ComponentViewModel
