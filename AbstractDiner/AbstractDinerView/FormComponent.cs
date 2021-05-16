@@ -10,19 +10,18 @@ namespace AbstractDinerView
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of dd39dd7... create lab2_hard
         public int Id { set { id = value; } }
-
         private readonly ComponentLogic logic;
-
         private int? id;
-
         public FormComponent(ComponentLogic logic)
         {
             InitializeComponent();
             this.logic = logic;
         }
-
         private void FormComponent_Load(object sender, EventArgs e)
         {
             if (id.HasValue)
@@ -37,11 +36,11 @@ namespace AbstractDinerView
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
                 }
             }
         }
-
         private void ButtonSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxName.Text))
@@ -65,7 +64,10 @@ namespace AbstractDinerView
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of dd39dd7... create lab2_hard
         private void ButtonCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;

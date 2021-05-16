@@ -1,23 +1,36 @@
 ﻿using AbstractDinerBusinessLogic.Enums;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AbstractDinerBusinessLogic.BindingModels
+namespace AbstractDinerDatabaseImplement.Models
 {
     /// <summary>
     /// Заказ
     /// </summary>
-    public class OrderBindingModel
+    public class Order
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
+
         public int SnackId { get; set; }
-<<<<<<< HEAD
+        
+        public string OrderName { get; set; }
+        
         public string SnackName { get; set; }
-=======
->>>>>>> parent of dd39dd7... create lab2_hard
+
+        [Required]
         public int Count { get; set; }
+
+        [Required]
         public decimal Sum { get; set; }
+
+        [Required]
         public OrderStatus Status { get; set; }
+
+        [Required]
         public DateTime DateCreate { get; set; }
+        
         public DateTime? DateImplement { get; set; }
     }
 }

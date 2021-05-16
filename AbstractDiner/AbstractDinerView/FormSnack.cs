@@ -74,7 +74,7 @@ namespace AbstractDinerView
 
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormSnackComponent>();
+            var form = Container.Resolve<FormProductComponent>();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 if (SnackComponents.ContainsKey(form.Id))
@@ -103,7 +103,6 @@ namespace AbstractDinerView
                 {
                     try
                     {
-
                         SnackComponents.Remove(Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value));
                     }
                     catch (Exception ex)
@@ -126,19 +125,19 @@ namespace AbstractDinerView
             if (string.IsNullOrEmpty(textBoxName.Text))
             {
                 MessageBox.Show("Заполните название", "Ошибка", MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
+                    MessageBoxIcon.Error);
                 return;
             }
             if (string.IsNullOrEmpty(textBoxPrice.Text))
             {
                 MessageBox.Show("Заполните цену", "Ошибка", MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
+                    MessageBoxIcon.Error);
                 return;
             }
             if (SnackComponents == null || SnackComponents.Count == 0)
             {
                 MessageBox.Show("Заполните компоненты", "Ошибка", MessageBoxButtons.OK,
-               MessageBoxIcon.Error);
+                    MessageBoxIcon.Error);
                 return;
             }
             try
@@ -151,14 +150,14 @@ namespace AbstractDinerView
                     SnackComponents = SnackComponents
                 });
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
                 Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
+                    MessageBoxIcon.Error);
             }
         }
 

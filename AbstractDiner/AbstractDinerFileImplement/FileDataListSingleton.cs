@@ -1,4 +1,4 @@
-﻿using AbstractDinnerFileImplement.Models;
+﻿using AbstractDinerFileImplement.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,17 +19,22 @@ namespace AbstractDinerFileImplement
 
         private readonly string ProductFileName = "Snack.xml";
 
+        private readonly string WarehouseFileName = "Warehouse.xml";
+
         public List<Component> Components { get; set; }
 
         public List<Order> Orders { get; set; }
 
         public List<Snack> Snacks { get; set; }
 
+        public List<Warehouse> Warehouses { get; set; }
+
         private FileDataListSingleton()
         {
             Components = LoadComponents();
             Orders = LoadOrders();
             Snacks = LoadProducts();
+            Warehouses = LoadWarehouses();
         }
 
         public static FileDataListSingleton GetInstance()
@@ -46,6 +51,7 @@ namespace AbstractDinerFileImplement
             SaveComponents();
             SaveOrders();
             SaveProducts();
+            SaveWarehouses();
         }
 
         private List<Component> LoadComponents()
@@ -84,7 +90,7 @@ namespace AbstractDinerFileImplement
                         Sum = Convert.ToInt32(elem.Element("Sum").Value),
                         Status = (AbstractDinerBusinessLogic.Enums.OrderStatus)Convert.ToInt32(elem.Element("Status").Value),
                         DateCreate = Convert.ToDateTime(elem.Element("DateCreate").Value),
-                        DateImplement = String.IsNullOrEmpty(elem.Element("DateImplement").Value) 
+                        DateImplement = String.IsNullOrEmpty(elem.Element("DateImplement").Value)
                             ? DateTime.MinValue : Convert.ToDateTime(elem.Element("DateImplement").Value)
                     });
                 }
@@ -114,6 +120,33 @@ namespace AbstractDinerFileImplement
                         SnackName = elem.Element("SnackName").Value,
                         Price = Convert.ToDecimal(elem.Element("Price").Value),
                         SnackComponents = prodComp
+                    });
+                }
+            }
+            return list;
+        }
+
+        private List<Warehouse> LoadWarehouses()
+        {
+            var list = new List<Warehouse>();
+            if (File.Exists(WarehouseFileName))
+            {
+                XDocument xDocument = XDocument.Load(WarehouseFileName);
+                var xElements = xDocument.Root.Elements("Warehouse").ToList();
+                foreach (var elem in xElements)
+                {
+                    var whComp = new Dictionary<int, int>();
+                    foreach (var component in elem.Element("WarehouseComponents").Elements("WarehouseComponent").ToList())
+                    {
+                        whComp.Add(Convert.ToInt32(component.Element("Key").Value), Convert.ToInt32(component.Element("Value").Value));
+                    }
+                    list.Add(new Warehouse
+                    {
+                        Id = Convert.ToInt32(elem.Attribute("Id").Value),
+                        WarehouseName = elem.Element("WarehouseName").Value,
+                        ResponsiblePerson = elem.Element("ResponsiblePerson").Value,
+                        CreateDate = Convert.ToDateTime(elem.Element("CreateDate").Value),
+                        WarehouseComponents = whComp
                     });
                 }
             }
@@ -179,6 +212,32 @@ namespace AbstractDinerFileImplement
                 }
                 XDocument xDocument = new XDocument(xElement);
                 xDocument.Save(ProductFileName);
+            }
+        }
+
+        private void SaveWarehouses()
+        {
+            if (Warehouses != null)
+            {
+                var xElement = new XElement("Warehouses");
+                foreach (var warehouse in Warehouses)
+                {
+                    var compElement = new XElement("WarehouseComponents");
+                    foreach (var component in warehouse.WarehouseComponents)
+                    {
+                        compElement.Add(new XElement("WarehouseComponent",
+                        new XElement("Key", component.Key),
+                        new XElement("Value", component.Value)));
+                    }
+                    xElement.Add(new XElement("Warehouse",
+                    new XAttribute("Id", warehouse.Id),
+                    new XElement("WarehouseName", warehouse.WarehouseName),
+                    new XElement("ResponsiblePerson", warehouse.ResponsiblePerson),
+                    new XElement("CreateDate", warehouse.CreateDate),
+                    compElement));
+                }
+                XDocument xDocument = new XDocument(xElement);
+                xDocument.Save(WarehouseFileName);
             }
         }
     }

@@ -54,7 +54,7 @@
             this.ButtonRef.TabIndex = 1;
             this.ButtonRef.Text = "Изменить";
             this.ButtonRef.UseVisualStyleBackColor = true;
-            this.ButtonRef.Click += new System.EventHandler(this.ButtonRef_Click);
+            this.ButtonRef.Click += new System.EventHandler(this.ButtonUpd_Click);
             // 
             // ButtonDel
             // 
@@ -74,14 +74,13 @@
             this.ButtonUpd.TabIndex = 3;
             this.ButtonUpd.Text = "Обновить";
             this.ButtonUpd.UseVisualStyleBackColor = true;
-            this.ButtonUpd.Click += new System.EventHandler(this.ButtonUpd_Click);
+            this.ButtonUpd.Click += new System.EventHandler(this.ButtonRef_Click);
             // 
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(13, 13);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowHeadersWidth = 62;
             this.dataGridView.RowTemplate.Height = 28;
             this.dataGridView.Size = new System.Drawing.Size(643, 425);
@@ -99,7 +98,6 @@
             this.Controls.Add(this.ButtonAdd);
             this.Name = "FormComponents";
             this.Text = "Компоненты";
-            this.Load += new System.EventHandler(this.FormComponents_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 

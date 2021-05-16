@@ -18,7 +18,6 @@ namespace AbstractDinnerFileImplement.Models
         {
             Components = new List<Component>();
             Orders = new List<Order>();
-            
             Snacks = new List<Snack>();
         }
         

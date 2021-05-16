@@ -32,8 +32,8 @@ namespace AbstractDinerView
                 if (list != null)
                 {
                     dataGridView.DataSource = list;
-                    dataGridView.Columns[0].Visible = false;
-                    dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dataGridView.Columns[4].Visible = false;
+                    dataGridView.Columns[5].Visible = false;
                 }
             }
             catch (Exception ex)
@@ -65,7 +65,7 @@ namespace AbstractDinerView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[4].Value);
+                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 try
                 {
                     _orderLogic.TakeOrderInWork(new ChangeStatusBindingModel
@@ -85,7 +85,7 @@ namespace AbstractDinerView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[4].Value);
+                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 try
                 {
                     _orderLogic.FinishOrder(new ChangeStatusBindingModel
@@ -105,7 +105,7 @@ namespace AbstractDinerView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[4].Value);
+                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 try
                 {
                     _orderLogic.PayOrder(new ChangeStatusBindingModel { OrderId = id });
@@ -120,6 +120,20 @@ namespace AbstractDinerView
         }
         private void ButtonRef_Click(object sender, EventArgs e)
         {
+            LoadData();
+        }
+
+        private void складыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormWarehouses>();
+            form.ShowDialog();
+            LoadData();
+        }
+
+        private void пополнениеСкладовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormTopUpWarehouse>();
+            form.ShowDialog();
             LoadData();
         }
     }

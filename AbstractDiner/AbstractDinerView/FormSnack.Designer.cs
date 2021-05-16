@@ -177,10 +177,10 @@
             // 
             this.textBoxPrice.Location = new System.Drawing.Point(148, 54);
             this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(100, 26);
+            this.textBoxPrice.Size = new System.Drawing.Size(235, 26);
             this.textBoxPrice.TabIndex = 10;
             // 
-            // FormProduct
+            // FormSnack
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

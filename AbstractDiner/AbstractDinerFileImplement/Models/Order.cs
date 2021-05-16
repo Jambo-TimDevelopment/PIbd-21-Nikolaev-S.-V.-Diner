@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AbstractDinnerFileImplement.Models
+namespace AbstractDinerFileImplement.Models
 {
     /// <summary>
     /// Заказ
@@ -25,7 +25,7 @@ namespace AbstractDinnerFileImplement.Models
         public OrderStatus Status { get; set; }
 
         public DateTime DateCreate { get; set; }
-
+        
         public DateTime? DateImplement { get; set; }
     }
 }
