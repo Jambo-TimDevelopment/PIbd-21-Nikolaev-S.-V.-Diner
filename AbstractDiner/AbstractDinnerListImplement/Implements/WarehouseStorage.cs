@@ -103,7 +103,7 @@ namespace AbstractDinnerListImplement.Implements
         private Warehouse CreateModel(WarehouseBindingModel model, Warehouse warehouse)
         {
             warehouse.WarehouseName = model.WarehouseName;
-            warehouse.ResposiblePerson = model.ResposiblePerson;
+            warehouse.ResposiblePerson = model.ResponsiblePerson;
             // удаляем убранные
             foreach (var key in warehouse.WarehouseComponents.Keys.ToList())
             {
@@ -149,7 +149,7 @@ namespace AbstractDinnerListImplement.Implements
             {
                 Id = wh.Id,
                 WarehouseName = wh.WarehouseName,
-                ResposiblePerson = wh.ResposiblePerson,
+                ResponsiblePerson = wh.ResposiblePerson,
                 CreateDate = wh.CreateDate,
                 WarehouseComponents = warehouseComponents
             };

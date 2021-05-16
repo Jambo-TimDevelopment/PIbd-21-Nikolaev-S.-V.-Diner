@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AbstractDinnerListImplement.Models
+namespace AbstractDinerFileImplement.Models
 {
     /// <summary>
     /// Заказ
@@ -12,7 +12,11 @@ namespace AbstractDinnerListImplement.Models
     {
         public int Id { get; set; }
 
-        public int ProductId { get; set; }
+        public int SnackId { get; set; }
+
+        public string OrderName { get; set; }
+
+        public string SnackName { get; set; }
 
         public int Count { get; set; }
 
