@@ -66,30 +66,32 @@ namespace AbstractDinerView
 
         private void Button_Save_Click(object sender, EventArgs e)
         {
-
-            if (string.IsNullOrEmpty(textBoxCount.Text))
+            if (textBoxCount.Text.Length == 0)
             {
-                MessageBox.Show("Заполните поле Количество", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Пустое поле Количество", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (comboBoxWarehouse.SelectedValue == null)
             {
-                MessageBox.Show("Выберите склад", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Вы не выбрали склад", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (comboBoxComponent.SelectedValue == null)
             {
-                MessageBox.Show("Выберите компонент", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Вы не выбрали компонент", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
             {
-                warehouseLogic.AddComponents(new WarehouseRefillBindingModel
+                int count = Convert.ToInt32(textBoxCount.Text);
+                if (count < 1)
                 {
-                    ComponentId = Convert.ToInt32(comboBoxComponent.SelectedValue),
-                    WarehouseId = Convert.ToInt32(comboBoxWarehouse.SelectedValue),
-                    Count = Convert.ToInt32(textBoxCount.Text)
-                });
+                    throw new Exception("Надо пополнять, а не уменьшать");
+                }
+                warehouseLogic.AddComponents(new WarehouseBindingModel
+                {
+                    Id = Convert.ToInt32(comboBoxWarehouse.SelectedValue)
+                }, Convert.ToInt32(comboBoxComponent.SelectedValue), Convert.ToInt32(textBoxCount.Text));
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
                 Close();
@@ -97,6 +99,7 @@ namespace AbstractDinerView
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 

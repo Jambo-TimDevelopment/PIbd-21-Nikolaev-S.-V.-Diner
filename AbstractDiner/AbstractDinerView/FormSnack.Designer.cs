@@ -180,7 +180,7 @@
             this.textBoxPrice.Size = new System.Drawing.Size(235, 26);
             this.textBoxPrice.TabIndex = 10;
             // 
-            // FormProduct
+            // FormSnack
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

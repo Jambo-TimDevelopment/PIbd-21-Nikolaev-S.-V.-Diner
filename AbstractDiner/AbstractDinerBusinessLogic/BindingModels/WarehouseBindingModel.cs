@@ -10,7 +10,7 @@ namespace AbstractDinerBusinessLogic.BindingModels
 
         public string WarehouseName;
 
-        public string ResponsiblePerson { get; set; }
+        public string ResposiblePerson { get; set; }
 
         public DateTime CreateDate { get; set; }
 

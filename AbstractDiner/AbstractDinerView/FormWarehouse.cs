@@ -31,7 +31,8 @@ namespace AbstractDinerView
                     if (view != null)
                     {
                         textBoxName.Text = view.WarehouseName;
-                        textBoxResposiblePerson.Text = view.ResponsiblePerson.ToString();
+                        textBoxResposiblePerson.Text = view.ResposiblePerson.ToString();
+                        //CreateDate.Value = view.CreateDate;
                         WarehouseComponents = view.WarehouseComponents ?? new Dictionary<int, (string, int)>();
                         LoadData();
                     }
@@ -76,12 +77,14 @@ namespace AbstractDinerView
         {
             if (string.IsNullOrEmpty(textBoxName.Text))
             {
-                MessageBox.Show("Заполните название", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Заполните название", "Ошибка", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return;
             }
             if (string.IsNullOrEmpty(textBoxResposiblePerson.Text))
             {
-                MessageBox.Show("Укажите имя ответственного лица", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Укажите имя ответственного лица", "Ошибка", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
@@ -90,10 +93,11 @@ namespace AbstractDinerView
                 {
                     Id = id,
                     WarehouseName = textBoxName.Text,
-                    ResponsiblePerson = textBoxResposiblePerson.Text,
-                    WarehouseComponents = WarehouseComponents
+                    ResposiblePerson = textBoxResposiblePerson.Text,
+                    WarehouseComponents = new Dictionary<int, (string, int)>()
                 }); 
-                MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Сохранение прошло успешно", "Сообщение",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
                 Close();
             }

@@ -170,7 +170,11 @@
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "FormMain";
+<<<<<<< HEAD
             this.Text = "Закусочная";
+=======
+            this.Text = "Главная форма";
+>>>>>>> parent of dd39dd7... create lab2_hard
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.menuStrip.ResumeLayout(false);

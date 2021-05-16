@@ -10,7 +10,11 @@ namespace AbstractDinnerListImplement.Models
     public class Snack
     {
         public int Id { get; set; }
+<<<<<<< HEAD
         public string SnackName { get; set; }
+=======
+        public string SnacksName { get; set; }
+>>>>>>> parent of dd39dd7... create lab2_hard
         public decimal Price { get; set; }
         public Dictionary<int, int> SnackComponents { get; set; }
     }

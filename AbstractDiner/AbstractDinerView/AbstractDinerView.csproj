@@ -288,6 +288,7 @@
       <Project>{bfd8121b-df33-47f6-89e8-eb8585d96a95}</Project>
       <Name>AbstractDinerBusinessLogic</Name>
     </ProjectReference>
+<<<<<<< HEAD
     <ProjectReference Include="..\AbstractDinerDatabaseImplement\AbstractDinerDatabaseImplement.csproj">
       <Project>{486d7db4-82d3-407c-aa92-e69bff8ceaf7}</Project>
       <Name>AbstractDinerDatabaseImplement</Name>
@@ -297,6 +298,8 @@
       <Project>{4d4f9246-fc44-4f0a-a778-a0ef949ed934}</Project>
       <Name>AbstractDinerFileImplement</Name>
     </ProjectReference>
+=======
+>>>>>>> parent of dd39dd7... create lab2_hard
     <ProjectReference Include="..\AbstractDinnerListImplement\AbstractDinnerListImplement.csproj">
       <Project>{1d65ae2d-bcc9-4c79-b35a-8e1ccd56382c}</Project>
       <Name>AbstractDinnerListImplement</Name>
