@@ -68,6 +68,46 @@ namespace AbstractDinerFileImplement.Implements
             source.Warehouses.Add(CreateModel(model, element));
         }
 
+        public bool TakeFromWarehouse(Dictionary<int, (string, int)> whcomponents, int componentCount)
+        {
+            foreach (var whComponent in whcomponents)
+            {
+                int count = source.Warehouses.Where(component => component.WarehouseComponents.ContainsKey(whComponent.Key)).Sum(material => material.WarehouseComponents[whComponent.Key]);
+
+                if (count < whComponent.Value.Item2 * componentCount)
+                {
+                    return false;
+                }
+            }
+
+            foreach (var whComponent in whcomponents)
+            {
+                int count = whComponent.Value.Item2 * componentCount;
+                IEnumerable<Warehouse> components = source.Warehouses.Where(material => material.WarehouseComponents.ContainsKey(whComponent.Key));
+
+                foreach (Warehouse kitchen in components)
+                {
+                    if (kitchen.WarehouseComponents[whComponent.Key] <= count)
+                    {
+                        count -= kitchen.WarehouseComponents[whComponent.Key];
+                        kitchen.WarehouseComponents.Remove(whComponent.Key);
+                    }
+                    else
+                    {
+                        kitchen.WarehouseComponents[whComponent.Key] -= count;
+                        count = 0;
+                    }
+
+                    if (count == 0)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            return true;
+        }
+
         public void Update(WarehouseBindingModel model)
         {
             var element = source.Warehouses.FirstOrDefault(rec => rec.Id == model.Id);

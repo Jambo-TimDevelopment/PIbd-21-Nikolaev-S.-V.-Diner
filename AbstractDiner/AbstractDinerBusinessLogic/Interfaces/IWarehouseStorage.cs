@@ -17,5 +17,7 @@ namespace AbstractDinerBusinessLogic.Interfaces
         void Update(WarehouseBindingModel model);
 
         void Delete(WarehouseBindingModel model);
+
+        bool TakeFromWarehouse(Dictionary<int, (string, int)> compontns, int count);
     }
 }

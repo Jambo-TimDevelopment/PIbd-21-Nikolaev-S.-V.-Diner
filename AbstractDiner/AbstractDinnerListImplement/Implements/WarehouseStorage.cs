@@ -83,6 +83,11 @@ namespace AbstractDinnerListImplement.Implements
             source.Warehouses.Add(CreateModel(model, tempWarhouse));
         }
 
+        public bool TakeFromWarehouse(Dictionary<int, (string, int)> compontns, int count)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(WarehouseBindingModel model)
         {
             Warehouse tempWarhouse = null;
