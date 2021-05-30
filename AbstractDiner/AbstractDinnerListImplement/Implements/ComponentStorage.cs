@@ -10,7 +10,6 @@ namespace AbstractDinnerListImplement.Implements
     public class ComponentStorage : IComponentStorage
     {
         private readonly DataListSingleton source;
-
         public ComponentStorage()
         {
             source = DataListSingleton.GetInstance();

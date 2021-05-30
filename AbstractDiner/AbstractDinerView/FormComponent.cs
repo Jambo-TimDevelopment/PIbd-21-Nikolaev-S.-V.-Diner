@@ -10,7 +10,7 @@ namespace AbstractDinerView
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
-        
+
         public int Id { set { id = value; } }
 
         private readonly ComponentLogic logic;
@@ -65,7 +65,7 @@ namespace AbstractDinerView
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
         private void ButtonCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;

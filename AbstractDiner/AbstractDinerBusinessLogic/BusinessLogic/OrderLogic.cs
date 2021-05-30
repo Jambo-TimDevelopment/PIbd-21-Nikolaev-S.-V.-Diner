@@ -11,9 +11,16 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
     {
         private readonly IOrderStorage _orderStorage;
 
-        public OrderLogic(IOrderStorage orderStorage)
+        private readonly ISnackStorage _snackStorage;
+
+        private readonly IWarehouseStorage _warehouseStorage;
+
+        public OrderLogic(IOrderStorage orderStorage, 
+            ISnackStorage snackStorage, IWarehouseStorage warehouseStorage)
         {
             _orderStorage = orderStorage;
+            _snackStorage = snackStorage;
+            _warehouseStorage = warehouseStorage;
         }
 
         public List<OrderViewModel> Read(OrderBindingModel model)
@@ -55,6 +62,11 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
             {
                 throw new Exception("Заказ не в статусе \"Принят\"");
             }
+            var snack = _snackStorage.GetElement(new SnackBindingModel
+            {
+                Id = order.SnackId
+            });
+            _warehouseStorage.CheckAndWriteOff(snack, order.Count);
             _orderStorage.Update(new OrderBindingModel
             {
                 Id = order.Id,

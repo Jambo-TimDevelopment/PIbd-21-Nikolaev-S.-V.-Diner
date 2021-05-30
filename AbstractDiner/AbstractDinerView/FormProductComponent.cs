@@ -25,6 +25,7 @@ namespace AbstractDinerView
                 textBoxCount.Text = value.ToString();
             }
         }
+
         public FormProductComponent(ComponentLogic logic)
         {
             InitializeComponent();

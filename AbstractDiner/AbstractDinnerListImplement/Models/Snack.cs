@@ -10,11 +10,11 @@ namespace AbstractDinnerListImplement.Models
     public class Snack
     {
         public int Id { get; set; }
-
-        public string SnacksName { get; set; }
-
+        
+        public string SnackName { get; set; }
+        
         public decimal Price { get; set; }
-
+        
         public Dictionary<int, int> SnackComponents { get; set; }
     }
 }
