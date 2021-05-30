@@ -17,5 +17,7 @@ namespace AbstractDinerBusinessLogic.Interfaces
         void Update(WarehouseBindingModel model);
 
         void Delete(WarehouseBindingModel model);
+
+        void CheckAndWriteOff(SnackViewModel model, int CountInOrder);
     }
 }

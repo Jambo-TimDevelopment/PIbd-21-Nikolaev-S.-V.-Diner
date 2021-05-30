@@ -53,10 +53,11 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
 
         public void Delete(WarehouseBindingModel warehouse)
         {
-            var element = _warehouseStorage.GetElement(new WarehouseBindingModel
+            var element = _warehouseStorage.GetElement(new WarehouseBindingModel { Id = warehouse.Id });
+            if (element == null)
             {
-                Id = warehouse.Id
-            });
+                throw new Exception("Элемент не найден");
+            }
             _warehouseStorage.Delete(warehouse);
         }
 

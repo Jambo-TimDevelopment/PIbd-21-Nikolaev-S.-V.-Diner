@@ -17,6 +17,11 @@ namespace AbstractDinnerListImplement.Implements
             source = DataListSingleton.GetInstance();
         }
 
+        public void CheckAndWriteOff(SnackViewModel model, int CountInOrder)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(WarehouseBindingModel model)
         {
             for (int i = 0; i < source.Warehouses.Count; ++i)
@@ -81,6 +86,11 @@ namespace AbstractDinnerListImplement.Implements
                 }
             }
             source.Warehouses.Add(CreateModel(model, tempWarhouse));
+        }
+
+        public bool TakeFromWarehouse(Dictionary<int, (string, int)> compontns, int count)
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(WarehouseBindingModel model)

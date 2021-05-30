@@ -153,7 +153,6 @@ namespace AbstractDinerFileImplement
             return list;
         }
 
-
         private void SaveComponents()
         {
             if (Components != null)
