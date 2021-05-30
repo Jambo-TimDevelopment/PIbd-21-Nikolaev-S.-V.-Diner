@@ -7,7 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractDinerView", "Abstra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbstractDinerBusinessLogic", "AbstractDinerBusinessLogic\AbstractDinerBusinessLogic.csproj", "{BFD8121B-DF33-47F6-89E8-EB8585D96A95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractDinnerListImplement", "AbstractDinnerListImplement\AbstractDinnerListImplement.csproj", "{1D65AE2D-BCC9-4C79-B35A-8E1CCD56382C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbstractDinnerListImplement", "AbstractDinnerListImplement\AbstractDinnerListImplement.csproj", "{1D65AE2D-BCC9-4C79-B35A-8E1CCD56382C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractDinerFileImplement", "AbstractDinerFileImplement\AbstractDinerFileImplement.csproj", "{4D4F9246-FC44-4F0A-A778-A0EF949ED934}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BFD8121B-DF33-47F6-89E8-EB8585D96A95} = {BFD8121B-DF33-47F6-89E8-EB8585D96A95}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +32,10 @@ Global
 		{1D65AE2D-BCC9-4C79-B35A-8E1CCD56382C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D65AE2D-BCC9-4C79-B35A-8E1CCD56382C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D65AE2D-BCC9-4C79-B35A-8E1CCD56382C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D4F9246-FC44-4F0A-A778-A0EF949ED934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D4F9246-FC44-4F0A-A778-A0EF949ED934}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D4F9246-FC44-4F0A-A778-A0EF949ED934}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D4F9246-FC44-4F0A-A778-A0EF949ED934}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

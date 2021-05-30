@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AbstractDinnerListImplement.Models
+namespace AbstractDinerFileImplement.Models
 {
     /// <summary>
     /// Изделие, изготавливаемое в магазине
@@ -11,7 +11,7 @@ namespace AbstractDinnerListImplement.Models
     {
         public int Id { get; set; }
 
-        public string SnacksName { get; set; }
+        public string SnackName { get; set; }
 
         public decimal Price { get; set; }
 

@@ -60,31 +60,39 @@ namespace AbstractDinerBusinessLogic.BusinessLogic
             _warehouseStorage.Delete(warehouse);
         }
 
-        public void AddComponents(WarehouseBindingModel model, int componentId, int count)
+        public void AddComponents(WarehouseRefillBindingModel model)
         {
-            var warehouse = _warehouseStorage.GetElement(new WarehouseBindingModel { Id = model.Id });
-            if (warehouse.WarehouseComponents.ContainsKey(componentId))
+            var warehouse = _warehouseStorage.GetElement(new WarehouseBindingModel
             {
-                warehouse.WarehouseComponents[componentId] =
-                    (warehouse.WarehouseComponents[componentId].Item1, warehouse.WarehouseComponents[componentId].Item2 + count);
+                Id = model.WarehouseId
+            }); ;
+
+            var component = _componentStorage.GetElement(new ComponentBindingModel
+            {
+                Id = model.ComponentId
+            });
+            if (warehouse == null)
+            {
+                throw new Exception("Не найден склад");
+            }
+            if (component == null)
+            {
+                throw new Exception("Не найден компонент");
+            }
+            if (warehouse.WarehouseComponents.ContainsKey(model.ComponentId))
+            {
+                warehouse.WarehouseComponents[model.ComponentId] =
+                    (component.ComponentName, warehouse.WarehouseComponents[model.ComponentId].Item2 + model.Count);
             }
             else
             {
-                var component = _componentStorage.GetElement(new ComponentBindingModel
-                {
-                    Id = componentId
-                });
-                if (component == null)
-                {
-                    throw new Exception("Компонент не найден");
-                }
-                warehouse.WarehouseComponents.Add(componentId, (component.ComponentName, count));
+                warehouse.WarehouseComponents.Add(component.Id, (component.ComponentName, model.Count));
             }
             _warehouseStorage.Update(new WarehouseBindingModel
             {
                 Id = warehouse.Id,
                 WarehouseName = warehouse.WarehouseName,
-                ResposiblePerson = warehouse.ResposiblePerson,
+                ResponsiblePerson = warehouse.ResponsiblePerson,
                 CreateDate = warehouse.CreateDate,
                 WarehouseComponents = warehouse.WarehouseComponents
             });
